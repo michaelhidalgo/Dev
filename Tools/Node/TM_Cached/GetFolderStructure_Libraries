@@ -1,0 +1,10 @@
+{
+    "d" : [
+            { "__type"        : "TeamMentor.CoreLib.Library_V3",
+                "guidanceItems" : [  ],
+                "libraryId"     : "e7a03478-05ae-4ac7-a843-2ca876bcd6ab",
+                "name"          : "Empty Library",
+                "subFolders"    : [ ]
+            }
+           ]
+}

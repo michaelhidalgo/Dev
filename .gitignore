@@ -17,6 +17,9 @@ bin
 #Debug
 /Tools/_temp
 
+#OSx specific
+.DS_Store
+
 
 
 

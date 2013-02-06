@@ -1,0 +1,6 @@
+{
+    "d" : { "GuidanceItemsMappings" : [ ],
+            "UniqueStrings"         : [ ],
+            "__type"                : "TeamMentor.CoreLib.TM_GUI_Objects"
+          }
+}
