@@ -115,11 +115,9 @@ namespace TeamMentor.CoreLib
 
                     return true;
                 }
-
-                throw new ValidationException();
             }
             
-            "[updateTmUser] provided username didn't match provided tmUser".error();
+            "[updateTmUser] provided username didn't match provided tmUser or validation failed".error();
             return false;
         }
         

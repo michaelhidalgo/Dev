@@ -296,18 +296,14 @@ namespace TeamMentor.CoreLib
         }        
         [ManageUsers]   public static bool          updateTmUser        (this TM_UserData userData, int userId, string userName, string firstname, string lastname, string title, string company, string email, string country, string state, bool passwordExpired,bool userEnabled, int groupId)
         {
-            try
-            {
-                return userData.tmUser(userId).updateTmUser(userName, firstname, lastname, title, company, email,
-                                                            country,
-                                                            state, passwordExpired, userEnabled, groupId);
-            }
-            catch (ValidationException)
+            bool success = userData.tmUser(userId).updateTmUser(userName, firstname, lastname, title, company, email, country, state, passwordExpired, userEnabled, groupId);
+
+            if (!success)
             {
                 userData.ReloadData();
-
-                throw;
             }
+
+            return success;
         }		                
         [ManageUsers]   public static List<string>  getUserRoles        (this TM_UserData userData, int userId)
         {

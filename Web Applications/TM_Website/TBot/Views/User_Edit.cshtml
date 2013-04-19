@@ -2,17 +2,19 @@
     
 function TMUser($scope,$http)
     {
-    $scope.update = function(userData) {
-        $scope.result = " ... saving user";
-        $http.put('/rest/user', userData)
-            .success(function(data) {
-                $scope.result = (data) ? "(User details saved)" : "Error: Failed to Save user!";
-            })
-            .error(function () {
-                        $scope.result = "Error: Failed to Save user!";
-                    });
-                };
-        };
+        $scope.update = function(userData)
+            {
+                $scope.result = " ... saving user";
+                $http.put('/rest/user', userData)
+                    .success(function(data)
+                        {
+                            $scope.result = (data) ? "(User details saved)" : "Error: Failed to Save user!";
+                        })
+                    .error(function ()
+                        {
+                            $scope.result = "Error: Failed to Save user!";
+                        });
+            };
 
         var userName = window.location.search.substring(1);
         if (userName != "")
