@@ -377,49 +377,43 @@
                 }
                 //opener.TM.Events.onRefreshGuiData();
             }
+
+        var previewEditorCode = function()
+            {
+                var editedLibraryItem = GetEditedLibraryItemCode();
+
+                previewGuidanceItem(editedLibraryItem, function() { alert(123); });                                     
+            };
         
         var saveEditorCode = function()
             {
-                    var htmlCode = TM.Gui.GuidanceItemEditor.getEditorCode()
-                    if (htmlCode ===null)
-                        return;					
-/*				    savedGuidanceItem = { guidanceItem: 
-                                                { 
-                                                        guidanceItemId : guidanceId  ,														
-                                                        title : "#Title".$().val(), 
-                                                        technology : "TechnologyValue_input".$().val(), 														
-                                                        phase : "PhaseValue_input".$().val(), 
-                                                        rule_Type: "TypeValue_input".$().val(), 
-                                                        category: "CategoryValue_input".$().val(), 
-//														topic: loadedGuidanceItem.topic,
-//														priority : loadedGuidanceItem.priority, 
-                                                        status : loadedGuidanceItem.Metadata.Status, 
-                                                        author :  loadedGuidanceItem.Metadata.Author, 
-                                                        libraryId : loadedGuidanceItem.Metadata.Library_Id , 
-                                                        //guidanceType : loadedGuidanceItem.guidanceType , 
-                                                        //creatorId : loadedGuidanceItem.creatorId, 
-                                                        //creatorCaption: loadedGuidanceItem.creatorCaption, 
-                                                        //images : loadedGuidanceItem.images, 
-                                                        //lastUpdate :  /Date(1309232562210)/ , // BUG: there is a conversion prob // "DateLabel".$().val(), //loadedGuidanceItem.lastUpdate,
-                                                        htmlContent : htmlCode
-                                                }
-                                            };    
-*/                                    
-//				updateGuidanceItemHtml(guidanceId, htmlCode, onSave)
-                
-                        //delete loadedGuidanceItem.__type
-                        loadedGuidanceItem.Metadata.Title        = "#Title".$().val();
-                        loadedGuidanceItem.Metadata.Technology   = "TechnologyValue_input".$().val(), 														
-                        loadedGuidanceItem.Metadata.Phase        = "PhaseValue_input".$().val(), 
-                        loadedGuidanceItem.Metadata.Type         = "TypeValue_input".$().val(), 
-                        loadedGuidanceItem.Metadata.Category     = "CategoryValue_input".$().val(), 
-                        loadedGuidanceItem.Metadata.DirectLink    = loadedGuidanceItem.Metadata.Title;
+                var editedLibraryItem = GetEditedLibraryItemCode();
 
-                        loadedGuidanceItem.Content.Data_Json      = htmlCode                        
-                        
-                        savedGuidanceItem = { guidanceItem: loadedGuidanceItem };
-                        updateGuidanceItem(savedGuidanceItem, onSave);                                        
+                updateGuidanceItem(editedLibraryItem, onSave);                                        
+            };
+        
+        function GetEditedLibraryItemCode()
+            {
+                var htmlCode = TM.Gui.GuidanceItemEditor.getEditorCode();
+
+                if (htmlCode === null)
+                    {
+                        return null;
                     }
+
+                loadedGuidanceItem.Metadata.Title = "#Title".$().val();
+                loadedGuidanceItem.Metadata.Technology = "TechnologyValue_input".$().val(),
+                loadedGuidanceItem.Metadata.Phase = "PhaseValue_input".$().val(),
+                loadedGuidanceItem.Metadata.Type = "TypeValue_input".$().val(),
+                loadedGuidanceItem.Metadata.Category = "CategoryValue_input".$().val(),
+                loadedGuidanceItem.Metadata.DirectLink = loadedGuidanceItem.Metadata.Title;
+
+                loadedGuidanceItem.Content.Data_Json = htmlCode;
+
+                var savedGuidanceItem = { guidanceItem: loadedGuidanceItem };
+
+                return savedGuidanceItem;
+            }
         
         var openGuidanceItemViewer = function()
         {			
@@ -527,6 +521,7 @@
                 
                 $("#backToViewer").click(openGuidanceItemViewer);                
                 $("#saveChanges").click(saveEditorCode);
+                $("#previewChanges").click(previewEditorCode);
                 $("#editSource").click(openNotepadEditor);
                 
                 //css changes
@@ -560,6 +555,7 @@
         <div class="EditButtons">
             <span id="editSource" class="IEButton">Edit Source</span>
             <span id="backToViewer" class="IEButton">View Article</span>
+            <span id="previewChanges" class="IEButton">Preview Changes</span>
             <span id="saveChanges" class="IEButton">Save Changes</span>
         </div>
     <span id="linksToEditors"></span>
