@@ -35,14 +35,9 @@ namespace TeamMentor.UnitTests.CoreLib
         {
             TMUser tmUser = CreateTMUser;
 
-            const string validEmail = "valid@valid.com";
-
             Assert.Throws(typeof (NullReferenceException),
                           () =>
-                          tmUser.updateTmUser(tmUser.UserName, tmUser.FirstName, tmUser.LastName, tmUser.Title,
-                                              tmUser.Company, validEmail, tmUser.Country, tmUser.State,
-                                              tmUser.AccountStatus.PasswordExpired, tmUser.AccountStatus.UserEnabled,
-                                              tmUser.GroupID));
+                          tmUser.updateTmUser(tmUser.user()));
         }
 
         [Test]
@@ -52,10 +47,10 @@ namespace TeamMentor.UnitTests.CoreLib
 
             const string invalidEmail = "notvalid";
 
-            bool success = tmUser.updateTmUser(tmUser.UserName, tmUser.FirstName, tmUser.LastName, tmUser.Title,
-                                               tmUser.Company, invalidEmail, tmUser.Country, tmUser.State,
-                                               tmUser.AccountStatus.PasswordExpired, tmUser.AccountStatus.UserEnabled,
-                                               tmUser.GroupID);
+            TM_User userViewModel = tmUser.user();
+            userViewModel.Email = invalidEmail;
+
+            bool success = tmUser.updateTmUser(userViewModel);
 
             Assert.IsFalse(success);
         }

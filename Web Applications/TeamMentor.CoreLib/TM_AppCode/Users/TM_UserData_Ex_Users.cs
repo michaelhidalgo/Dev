@@ -293,18 +293,11 @@ namespace TeamMentor.CoreLib
         [ManageUsers]   public static bool          deleteTmUser        (this TM_UserData userData, int userId)
         {
             return userData.deleteTmUser(userId.tmUser());
-        }        
-        [ManageUsers]   public static bool          updateTmUser        (this TM_UserData userData, int userId, string userName, string firstname, string lastname, string title, string company, string email, string country, string state, DateTime accountExpiration, bool passwordExpired, bool userEnabled, int groupId)
+        }
+        [ManageUsers] public static bool updateTmUser(this TM_UserData userData, TM_User tmUserViewModel)
         {
-            bool success = userData.tmUser(userId).updateTmUser(userName, firstname, lastname, title, company, email, country, state, passwordExpired, userEnabled, groupId);
-
-            if (!success)
-            {
-                userData.ReloadData();
-            }
-
-            return success;
-        }		                
+            return userData.tmUser(tmUserViewModel.UserId).updateTmUser(tmUserViewModel);
+        }	                
         [ManageUsers]   public static List<string>  getUserRoles        (this TM_UserData userData, int userId)
         {
             var tmUser = userData.tmUser(userId);
@@ -341,6 +334,6 @@ namespace TeamMentor.CoreLib
                 tmUser.saveTmUser();                
             }
             return tmUser;
-        }        
+        }
     }
 }
