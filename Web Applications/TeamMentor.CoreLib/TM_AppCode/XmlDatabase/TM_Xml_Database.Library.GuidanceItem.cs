@@ -336,6 +336,12 @@ namespace TeamMentor.CoreLib
         { 
             return article.xmlDB_Save_Article(article.Metadata.Library_Id, tmDatabase);
         }
+        [EditArticles]public static TeamMentor_Article xmlDB_Preview_Article(this TeamMentor_Article article)
+        {
+            new LibraryItemSanitizer().Sanitize(article);
+            
+            return article;
+        }
         [EditArticles]  public static bool xmlDB_Save_Article(this TeamMentor_Article article, Guid libraryId, TM_Xml_Database tmDatabase)
         {
             if (libraryId == Guid.Empty)                                                // ensure we have a library to put the Article in

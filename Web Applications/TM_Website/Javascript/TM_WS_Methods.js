@@ -182,7 +182,7 @@ function previewGuidanceItem(guidanceItem, callback)
 {
     var url = TM.tmWebServices + 'GetPreview';
     var params =  JSON.stringify(guidanceItem);
-//	alert("saving data" + params);						
+//	alert("previewing data" + params);						
     invokeWebService( url, params, callback, defaultErrorHandler);
 }
 

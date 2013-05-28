@@ -369,18 +369,16 @@
                 //opener.TM.Events.onRefreshGuiData();
             }
 
-        var previewEditorCode = function()
+        var previewEditorCode = function ()
             {
-                var editedLibraryItem = GetEditedLibraryItemCode();
-
-                previewGuidanceItem(editedLibraryItem, function() { alert(123); });                                     
+                window.open("/Html_Pages/GuidanceItemViewer/GuidanceItemViewer.html?#preview:" + createUUID(), "Preview");
             };
         
         var saveEditorCode = function()
             {
                 var editedLibraryItem = GetEditedLibraryItemCode();
 
-                updateGuidanceItem(editedLibraryItem, onSave);                                        
+                updateGuidanceItem(editedLibraryItem, onSave);
             };
         
         function GetEditedLibraryItemCode()
@@ -405,12 +403,12 @@
 
                 return savedGuidanceItem;
             }
-        
-        var openGuidanceItemViewer = function()
-        {			
-            //document.location = "/html_pages/GuidanceItemViewer/GuidanceItemViewer.html?#ruledisplay:" + guidanceId;
-            document.location = "/article/" + guidanceId;
-        }
+
+            var openGuidanceItemViewer = function () {
+                
+                //document.location = "/html_pages/GuidanceItemViewer/GuidanceItemViewer.html?#ruledisplay:" + guidanceId;
+                document.location = "/article/" + guidanceId;
+            }
         
         var loadEditor = function()
         {									
