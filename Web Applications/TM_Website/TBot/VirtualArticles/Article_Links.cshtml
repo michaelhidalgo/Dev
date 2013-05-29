@@ -6,28 +6,15 @@
 @{
     var tmDatabase = TM_Xml_Database.Current;
     var articles = tmDatabase.Cached_GuidanceItems;
-    var articlePaths = tmDatabase.GuidanceItems_FileMappings;
-    var index = 1;
-    var libraryPath = tmDatabase.Path_XmlLibraries;
-    var guidToFind = "577e90c9-8e44-4240-b00f-768316d63901".guid();
-    //var guidToFind = "97b5eafb-970d-4436-ae7f-3141f057e410";
-    var tmArticle = tmDatabase.tmGuidanceItem(guidToFind);
-
-    //var articleContent = tmArticle.Content.Data_Json;
-
+    var index = 0;
     var guidRexEx = @"([a-z0-9]{8}[-][a-z0-9]{4}[-][a-z0-9]{4}[-][a-z0-9]{4}[-][a-z0-9]{12})";
     //var GUIDs = articleContent.matches(guidRexEx).select((match)=> match.Value);
-
+    
     Func<String, List<string>> contentGuids =
         (articleContent) =>
             {
                 var guids = articleContent.matches(guidRexEx).select((match)=> match.Value);
-                return guids;
-                /*var guidsText = "<ul>";
-                foreach (var guid in guids)
-                    guidsText+= "<li><a href={0}>{0}</a></li>".format(guid);
-                guidsText += "</ul>";
-                return guidsText;*/
+                return guids;                
             };
     Func<string, string> getGuidType =
         (id) =>
@@ -35,8 +22,9 @@
                 if (tmDatabase.tmGuidanceItem(id.guid()).notNull())
                     return "label-success";
                 if (tmDatabase.VirtualArticles.hasKey(id.guid()))
-                    return "label-inverse";
-                return "label-important"; 
+                    return "label-info";
+                //return "label-important"; 
+                return "";
             };
 
 }
