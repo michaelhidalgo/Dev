@@ -29,6 +29,16 @@
                 guidsText += "</ul>";
                 return guidsText;*/
             };
+    Func<string, string> getGuidType =
+        (id) =>
+            {
+                if (tmDatabase.tmGuidanceItem(id.guid()).notNull())
+                    return "label-inverse";
+                if (tmDatabase.VirtualArticles.hasKey(id.guid()))
+                    return "label-success";
+                return "label-important"; 
+            };
+
 }
 
 <h4>Article Links</h4>
@@ -54,7 +64,9 @@
             <td><ul>
                     @foreach(var guid in contentGuids(article.Value.Content.Data_Json))
                     {
-                        <li><a href="/article/@guid"  target="_blank">@guid</a></li>
+                        <li><a href="/article/@guid"  target="_blank">
+                                <span class="label @getGuidType(@guid)">@guid</span>
+                            </a></li>
                     }
                 </ul>
             </td>
