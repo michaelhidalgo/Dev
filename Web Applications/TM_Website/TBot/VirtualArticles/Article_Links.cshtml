@@ -33,9 +33,9 @@
         (id) =>
             {
                 if (tmDatabase.tmGuidanceItem(id.guid()).notNull())
-                    return "label-inverse";
-                if (tmDatabase.VirtualArticles.hasKey(id.guid()))
                     return "label-success";
+                if (tmDatabase.VirtualArticles.hasKey(id.guid()))
+                    return "label-inverse";
                 return "label-important"; 
             };
 
