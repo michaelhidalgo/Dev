@@ -64,20 +64,20 @@
          <tr>             
              <th>Id (click to test)</th>            
              <th>Action</th>
-             <th>Target_Id</th>            
+             <!--<th>Target_Id</th>            -->
              <th>Redirect_Uri</th>   
-             <th>TM_Server</th>
-             <th>Service</th>
+             <!--<th>TM_Server</th>
+             <th>Service</th> -->
              <th>Action</th>
          </tr>  
          <tbody ng-repeat="Mapping in Mappings">
              <tr>
                  <td><a ng-href="/article/{{Mapping.Id}}" target="_blank">{{Mapping.Id}}</a></td>
                  <td>{{Mapping.Action}}</td>
-                 <td>{{Mapping.Target_Id}}</td>
+                 <!--<td>{{Mapping.Target_Id}}</td>-->
                  <td>{{Mapping.Redirect_Uri}}</td>
-                 <td>{{Mapping.TM_Server}}</td>
-                 <td>{{Mapping.Service}}</td>
+                 <!--<td>{{Mapping.TM_Server}}</td>
+                 <td>{{Mapping.Service}}</td>-->
                  <td><button class="btn btn-danger btn-small" ng-click="remove_Mapping(Mapping.Id)">remove</button></td>
              </tr>    
          </tbody>
