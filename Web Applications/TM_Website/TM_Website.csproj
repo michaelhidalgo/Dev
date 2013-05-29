@@ -269,6 +269,7 @@
     <Content Include="Javascript\bootstrap\glyphicons-halflings.png" />
     <Content Include="Javascript\gAnalytics\ga.js" />
     <Content Include="Javascript\gAnalytics\TrackingCode.js" />
+    <Content Include="Javascript\Html_Pages\GuidanceItemEditor\GuidanceItemPreview.js" />
     <Content Include="Javascript\uuid-generator.js" />
     <Content Include="Javascript\Html_Pages\GuidanceItemEditor\cleditor\cleditor.js" />
     <Content Include="Javascript\Html_Pages\GuidanceItemEditor\GuidanceItemEditor.js" />

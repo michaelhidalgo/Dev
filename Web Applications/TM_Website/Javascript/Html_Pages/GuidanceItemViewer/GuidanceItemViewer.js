@@ -22,7 +22,7 @@ var handleCommand = function (command) {
                 loadGuidanceItem();
                 return false;
             case 'preview':
-                previewGuidanceItem();
+                previewEditorCode();
                 return false;
             default:
                 break;
@@ -52,12 +52,15 @@ var getGuidFromUrl = function () {
 }
 //                alert(getGuidanceIdfromUrl());
 
-var previewGuidanceItem = function () {
+var previewEditorCode = function () {
 
-    //askUserQuestion()previewGuidanceItem(window.opener.GetEditedLibraryItemCode(), showGuidanceItemData); 
+    previewGuidanceItem(window.opener.GetEditedLibraryItemCode(), showEditorPreview);
 
-    showGuidanceItemData({ d: window.opener.GetEditedLibraryItemCode().guidanceItem });
+}
 
+var showEditorPreview = function (data) {
+    data.d.isPreview = true;
+    showGuidanceItemData(data);
 }
 
 var loadGuidanceItem = function () {
@@ -94,7 +97,7 @@ showGuidanceItemData = function (data) {
             showGuidanceItemHtml(loadedGuidanceItem.Content.Data_Json);
             $("#Edit_WYSIWYG").html("Edit WYSIWYG");
         }
-        if (TM.Gui.CurrentUser.isEditor()) {
+        if (TM.Gui.CurrentUser.isEditor() && loadedGuidanceItem.isPreview != true) {
             $(".EditButtons").show();
         }
     }
