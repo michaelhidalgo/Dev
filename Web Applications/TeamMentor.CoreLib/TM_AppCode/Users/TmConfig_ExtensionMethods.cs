@@ -61,13 +61,13 @@ namespace TeamMentor.CoreLib
         {
             if (tmConfig.TMSetup.UseAppDataFolder)
                 return TMConfig.AppData_Folder.pathCombine(TMConsts.XML_DATABASE_VIRTUAL_PATH);
-            return tmConfig.rootDataFolder().pathCombine(TMConsts.XML_DATABASE_VIRTUAL_PATH_LEGACY).fullPath();
+            return tmConfig.librarDataRootFolder().pathCombine(TMConsts.XML_DATABASE_VIRTUAL_PATH_LEGACY).fullPath();
         }
-        public static string    rootDataFolder      (this TMConfig tmConfig)
+        public static string    librarDataRootFolder      (this TMConfig tmConfig)
         {									
             //set xmlDatabasePath based on virtualPathMapping			
-            var virtualPathMapping = tmConfig.virtualPathMapping();			
-            var xmlDatabasePath = TMConfig.BaseFolder.pathCombine(virtualPathMapping).fullPath();
+            var virtualPathMapping = tmConfig.virtualPathMapping();
+            var xmlDatabasePath = TMConfig.WebRoot.pathCombine(virtualPathMapping).fullPath();
 
             //check if we can write to xmlDatabasePath (and default to App_Data if we can't write to provided direct)
             if (xmlDatabasePath.canNotWriteToPath())
@@ -75,9 +75,12 @@ namespace TeamMentor.CoreLib
 
             return xmlDatabasePath;
         }
-        public static string    getGitUserConfigFile(this TMConfig tmConfig)
+        public static string getGitUserConfigFile(this TMConfig tmConfig)           // git user
         {
-            return TMConfig.BaseFolder.pathCombine("gitUserData.config");
+            
+            return (TMConfig.Location.valid()) 
+                        ? TMConfig.Location.parentFolder().pathCombine(TMConsts.GIT_USERDATA_FILENAME)
+                        : "";
         }
         public static bool      setGitUserConfigFile(this TMConfig tmConfig, string gitUserConfig_Data)
         {

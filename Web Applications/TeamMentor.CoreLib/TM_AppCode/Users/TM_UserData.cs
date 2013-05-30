@@ -20,8 +20,7 @@ namespace TeamMentor.CoreLib
         public TM_SecretData            SecretData          { get; set; }
         
         //public Dictionary<Guid, TMUser>	ActiveSessions	    { get; set; }
-        public bool                     UsingFileStorage    { get; set; }        
-        public bool                     AutoGitCommit       { get; set; }
+        public bool                     UsingFileStorage    { get; set; }                
         public API_NGit                 NGit                { get; set; }
         
         
@@ -41,8 +40,7 @@ namespace TeamMentor.CoreLib
             FirstScriptToInvoke = "H2Scripts//FirstScriptToInvoke.h2";
             Path_WebRootFiles   = "WebRoot_Files";
             TMUsers             = new List<TMUser>();                        
-            SecretData          = new TM_SecretData();
-            AutoGitCommit       = TMConfig.Current.Git.AutoCommit_UserData;           
+            SecretData          = new TM_SecretData();            
             return this;
         }
 

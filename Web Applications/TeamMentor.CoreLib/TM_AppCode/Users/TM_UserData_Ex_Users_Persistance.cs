@@ -118,9 +118,9 @@ namespace TeamMentor.CoreLib
         
 
         public static TM_UserData   handle_UserData_ConfigActions(this TM_UserData userData)
-        {
-            TMConfig.Location = userData.Path_UserData.pathCombine("TMConfig.config");
-            var userConfigFile = TMConfig.Location;// userData.Path_UserData.pathCombine("TMConfig.config");
+        {            
+            TMConfig.Location = userData.Path_UserData.pathCombine(TMConsts.TM_CONFIG_FILENAME);
+            var userConfigFile = TMConfig.Location; 
             if (userConfigFile.fileExists())
             {
                 var newConfig = userConfigFile.load<TMConfig>();
@@ -128,8 +128,7 @@ namespace TeamMentor.CoreLib
                     "[handleUserDataConfigActions] failed to load config file from: {0}".error(userConfigFile);
                 else
                 {
-                    TMConfig.Current = newConfig;
-                    userData.AutoGitCommit = newConfig.Git.AutoCommit_UserData;     // in case this changed
+                    TMConfig.Current = newConfig;                    
                     return userData;
                 }
             }

@@ -14,8 +14,7 @@ namespace TeamMentor.CoreLib
         public static bool              SkipServerOnlineCheck { get; set; }        
 
         public bool			            UsingFileStorage	  { get; set; }         //config           
-        public bool                     ServerOnline          { get; set; }         
-        public bool                     AutoGitCommit         { get; set; }                
+        public bool                     ServerOnline          { get; set; }                 
         public TM_UserData              UserData              { get; set; }         //users and tracking             
         public List<API_NGit>           NGits                 { get; set; }         // Git object, one per library that has git support
         public string 	                Path_XmlDatabase      { get; set; }					
@@ -138,9 +137,7 @@ namespace TeamMentor.CoreLib
             {
                 var tmConfig            = TMConfig.Current;
                 var xmlDatabasePath     = tmConfig.xmlDatabasePath();
-                var libraryPath         = tmConfig.TMSetup.XmlLibrariesPath;
-                
-                AutoGitCommit           = tmConfig.Git.AutoCommit_LibraryData;
+                var libraryPath         = tmConfig.TMSetup.XmlLibrariesPath;                                
                 
                 "[TM_Xml_Database][setDataFromCurrentScript] TM_Xml_Database.Path_XmlDatabase: {0}" .debug(xmlDatabasePath);
                 "[TM_Xml_Database][setDataFromCurrentScript] TMConfig.Current.XmlLibrariesPath: {0}".debug(libraryPath);

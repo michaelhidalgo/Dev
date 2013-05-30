@@ -70,18 +70,7 @@ namespace TeamMentor.CoreLib
             var passwordHash = sha256Hash.hash_PBKDF2(tmUser.ID);
 
             return passwordHash;
-        }
-
-        /*public static Guid      current_SingleUseLoginToken(this TMUser tmUser, bool reset = false)
-        {
-            if (reset || tmUser.SecretData.SingleUseLoginToken == Guid.Empty)
-            {
-                tmUser.SecretData.SingleUseLoginToken = Guid.NewGuid();
-                tmUser.saveTmUser();
-                tmUser.logUserActivity("SingleUseLoginToken Requested", "by asp.netSessionId: {0}".format(HttpContextFactory.Session.SessionID));
-            }
-            return tmUser.SecretData.SingleUseLoginToken;
-        }*/
+        }        
         public static bool      sendPasswordReminder(this string email)
         {
             var tmUser = email.tmUser_FromEmail();
@@ -91,52 +80,28 @@ namespace TeamMentor.CoreLib
             if (resetToken != Guid.Empty)
                 return SendEmails.SendPasswordReminderToUser(tmUser, resetToken);
             return false;
-        } 
-        
-        /*public static Guid      current_PasswordResetToken(this string email)
-        {
-            var tmUser = email.tmUser_FromEmail();
-            if (tmUser.notNull())
-                return tmUser.current_PasswordResetToken();
-            "[current_PasswordResetToken] failed for email= {0}".error(email);
-            return Guid.Empty;
-        }
-        public static Guid      current_PasswordResetToken(this TMUser tmUser, bool reset = false)
-        {
-            if (tmUser.notNull())
-            {
-                if (reset || tmUser.SecretData.PasswordResetToken.isNull())
-                {
-                    var passwordResetToken = tmUser.new_PasswordResetToken();                    
-                }
-                tmUser.logUserActivity("PasswordReset Requested","by asp.netSessionId: {0}".format(HttpContextFactory.Session.SessionID));
-                return tmUser.SecretData.PasswordResetToken;                                    
-                //tmUser.logUserActivity("Error:PasswordResetToken","wrong email used, by asp.netSessionId: {0}".format(HttpContextFactory.Session.SessionID));                                    
-            }            
-            return Guid.Empty;
-        }*/
-        public static bool passwordResetToken_isValid(this TMUser tmUser, Guid resetToken)
+        }              
+        public static bool      passwordResetToken_isValid(this TMUser tmUser, Guid resetToken)
         {
             if(tmUser.notNull())
                 if (tmUser.SecretData.PasswordResetToken == tmUser.passwordResetToken_getHash(resetToken))
                     return true;
             return false;
-        }
-        
-        public static string passwordResetToken_getHash(this TMUser tmUser, Guid resetToken)
+        }        
+        public static string    passwordResetToken_getHash(this TMUser tmUser, Guid resetToken)
         {
             if(tmUser.notNull())                
                 return tmUser.UserName.hash_PBKDF2(resetToken);
             return null;
         }
-        public static Guid passwordResetToken_getHash(this string email)
+        public static Guid      passwordResetToken_getHash(this string email)
         {
             var tmUser = email.tmUser_FromEmail();
             if (tmUser.notNull())
                 return tmUser.passwordResetToken_getTokenAndSetHash();
             return Guid.NewGuid();
         }
-        public static Guid passwordResetToken_getTokenAndSetHash(this TMUser tmUser)
+        public static Guid      passwordResetToken_getTokenAndSetHash(this TMUser tmUser)
         {
             if (tmUser.notNull())
             {
@@ -160,6 +125,19 @@ namespace TeamMentor.CoreLib
                     }                                    
             }
             return "/error";
+        }
+
+        public static string    userHostAddress(this TMUser tmUser)
+        {
+            try
+            {
+                return HttpContextFactory.Request.UserHostAddress;
+            }
+            catch (Exception ex)
+            {
+                ex.log("in userHostAddress");
+                return "0.0.0.0";
+            }
         }
     }
 

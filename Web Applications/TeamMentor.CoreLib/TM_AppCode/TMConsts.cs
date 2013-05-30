@@ -1,11 +1,11 @@
 namespace TeamMentor.CoreLib
 {
 	public class TMConsts
-	{
-		// ReSharper disable InconsistentNaming				
-		public static string VIRTUAL_PATH_MAPPING			  = "..\\..";					  
+	{		
+		public static string VIRTUAL_PATH_MAPPING			  = "..\\..";					  // Will put the data into the root of the normal TM git repo
 		public static string XML_DATABASE_VIRTUAL_PATH		  = "TeamMentor";
-		public static string XML_DATABASE_VIRTUAL_PATH_LEGACY = "Library_Data\\XmlDatabase"; // for legacy support (pre 3.3)
-		// ReSharper restore InconsistentNaming
+		public static string XML_DATABASE_VIRTUAL_PATH_LEGACY = "Library_Data\\XmlDatabase";  // for legacy support (pre 3.3)
+        public static string GIT_USERDATA_FILENAME            = "gitUserData.config";
+        public static string TM_CONFIG_FILENAME               = "TMConfig.config";		
 	}
 }

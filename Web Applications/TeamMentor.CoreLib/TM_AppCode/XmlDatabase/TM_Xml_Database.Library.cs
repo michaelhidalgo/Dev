@@ -496,6 +496,10 @@ namespace TeamMentor.CoreLib
         {
             return TMConfig.Current;
         }
+        public static string webRoot(this  TM_Xml_Database tmDatabase)
+        {
+            return TMConfig.WebRoot;
+        }
     }
     public static class TM_Xml_Database_ExtensionMethods_OnInstallationActions
     {

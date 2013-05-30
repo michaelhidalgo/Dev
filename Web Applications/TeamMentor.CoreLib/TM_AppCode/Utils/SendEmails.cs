@@ -184,52 +184,8 @@ You can login with your {2} account at {3}
             }
 
         }
-        
-        [Assert_Admin]
-        public static void SendEmailAboutUserToTM(string action, TMUser tmUser)
-        {
-            var subject = "User {0} {1}".format(tmUser.UserName, action);
-            var message =
-@"The user {0} has just {1}
+                
 
-Stats:
-
-- last  login: {2}
-- login fails: {3}
-- login Oks  : {4}
-
-                ".format(tmUser.UserName, 
-                         action, 
-                         tmUser.Stats.LastLogin,
-                         tmUser.Stats.LoginFail,
-                         tmUser.Stats.LoginOk);
-            SendEmailToTM(subject, message);
-        }
-
-/*        [Assert_Admin]
-        public static bool SendLoginTokenToUser(TMUser tmUser)
-        {
-            try
-            {                 
-var userMessage =
-@"Hi {0} {1} A Login token was requested for your account.
-
-You can login to your {2} account using {4}/rest/{2}/{3}
-
-TeamMentor Team.
-             ".format(tmUser.FirstName, tmUser.LastName, tmUser.UserName, tmUser.current_SingleUseLoginToken(), TM_Server_URL);
-             SendEmailToEmail(tmUser.EMail, "TeamMentor Login Link", userMessage);
-             userMessage = "(sent to: {0})\n\n{1}".format(tmUser.EMail, userMessage);
-             SendEmailToTM("(user email) TeamMentor Login Link", userMessage);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                ex.log();
-            }
-            return false;
-        }
-*/
         [Assert_Admin]
         public static bool SendPasswordReminderToUser(TMUser tmUser, Guid passwordResetToken)
         {
