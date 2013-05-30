@@ -40,8 +40,7 @@ namespace TeamMentor.CoreLib
         {
             FirstScriptToInvoke = "H2Scripts//FirstScriptToInvoke.h2";
             Path_WebRootFiles   = "WebRoot_Files";
-            TMUsers             = new List<TMUser>();            
-            //ActiveSessions      = new Dictionary<Guid, TMUser>();
+            TMUsers             = new List<TMUser>();                        
             SecretData          = new TM_SecretData();
             AutoGitCommit       = TMConfig.Current.Git.AutoCommit_UserData;           
             return this;
@@ -49,21 +48,11 @@ namespace TeamMentor.CoreLib
 
         public TM_UserData SetUp()
         {
-        /*    return SetUp(true);
-        }
-        public TM_UserData SetUp(bool createDefaultAdminUser)
-        {*/
             try
             {
                 this.setupGitSupport();
                 this.firstScript_Invoke();                
-                SecretData = this.secretData_Load();
-                
-                //this.secretDataScript_Invoke();
-            
-            
-                //if (createDefaultAdminUser)
-                //   this.createDefaultAdminUser();  // make sure the admin user exists and is configured                            
+                SecretData = this.secretData_Load();                
             }
             catch (Exception ex)
             {

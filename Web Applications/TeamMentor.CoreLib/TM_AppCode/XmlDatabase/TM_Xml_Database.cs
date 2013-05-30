@@ -70,33 +70,38 @@ namespace TeamMentor.CoreLib
                 ()=>{
                         lock (this)
                         {
-                            try
-                            {
-                                ResetDatabase();
-                                if (UsingFileStorage)
-                                {
-                                    SetPaths_UserData();                                                                                                                                    
-                                }
-                                UserData.SetUp();
-                                this.copy_FilesIntoWebRoot();
-                                if (UsingFileStorage)
-                                {                       
-                                    SetPaths_XmlDatabase();            
-                                    this.handle_UserData_GitLibraries();
-                                    loadDataIntoMemory();
-                                    //this.handleDefaultInstallActions();                                    
-                                }
-                                UserData.createDefaultAdminUser();  // make sure the admin user exists and is configured
-                            }
-                            catch (Exception ex)
-                            {
-                                "[TM_Xml_Database] Setup: {0} \n\n".error(ex.Message, ex.StackTrace);
-                            }
+                            TM_Setup_Thread();
                             SetupThread = null;
                         }                        
                 });
             return this;
-        } 
+        }
+
+        [Admin] public void TM_Setup_Thread()
+        {
+            try
+            {
+                ResetDatabase();
+                if (UsingFileStorage)
+                {
+                    SetPaths_UserData();
+                }
+                UserData.SetUp();
+                this.copy_FilesIntoWebRoot();
+                if (UsingFileStorage)
+                {
+                    SetPaths_XmlDatabase();
+                    this.handle_UserData_GitLibraries();
+                    loadDataIntoMemory();                                                      
+                }
+                UserData.createDefaultAdminUser();  // make sure the admin user exists and is configured
+            }
+            catch (Exception ex)
+            {
+                "[TM_Xml_Database] Setup: {0} \n\n".error(ex.Message, ex.StackTrace);
+            }
+        }
+
         [Admin] public void             CheckIfServerIsOnline()
         {
             if (SkipServerOnlineCheck)

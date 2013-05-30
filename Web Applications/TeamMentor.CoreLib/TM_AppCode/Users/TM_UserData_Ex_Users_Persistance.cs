@@ -119,7 +119,8 @@ namespace TeamMentor.CoreLib
 
         public static TM_UserData   handle_UserData_ConfigActions(this TM_UserData userData)
         {
-            var userConfigFile = userData.Path_UserData.pathCombine("TMConfig.config");
+            TMConfig.Location = userData.Path_UserData.pathCombine("TMConfig.config");
+            var userConfigFile = TMConfig.Location;// userData.Path_UserData.pathCombine("TMConfig.config");
             if (userConfigFile.fileExists())
             {
                 var newConfig = userConfigFile.load<TMConfig>();
@@ -129,8 +130,10 @@ namespace TeamMentor.CoreLib
                 {
                     TMConfig.Current = newConfig;
                     userData.AutoGitCommit = newConfig.Git.AutoCommit_UserData;     // in case this changed
+                    return userData;
                 }
             }
+            TMConfig.Current.SaveTMConfig(); // if the TMConfig.config doesn't exist or failed to load, save it with the current TMConfig.Current
             return userData;
         }
 

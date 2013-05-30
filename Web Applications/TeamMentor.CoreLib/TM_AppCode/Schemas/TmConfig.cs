@@ -142,13 +142,13 @@ namespace TeamMentor.CoreLib
         {
             get { return BaseFolder.pathCombine("App_Data"); }
         }
-        public static string        Location	    
-        {
+        public static string        Location { get; set; }
+        /*{
             get
             {				
                 return BaseFolder.pathCombine("TMConfig.config");
             }
-        }				        
+        }*/				        
         public static TMConfig      Current         
         { 
             get
@@ -167,7 +167,7 @@ namespace TeamMentor.CoreLib
             {
              //   "In TMConfig.loadConfig, provided location was not found(returning default object): {0}".debug(Location);
                 _current = new TMConfig();
-                _current.SaveTMConfig();
+                //_current.SaveTMConfig();          // don't save since this will place it on the webroot
             }
             return _current;
         }                                                
