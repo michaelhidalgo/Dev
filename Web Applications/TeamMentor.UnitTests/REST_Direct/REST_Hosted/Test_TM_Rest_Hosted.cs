@@ -8,7 +8,7 @@ namespace TeamMentor.UnitTests.REST
 
 {	    
     [TestFixture]
-    //[Ignore]                // can't run these on TeamCity due to security protection for binding WCF address into Port
+    [Ignore]                // can't run these on TeamCity due to security protection for binding WCF address into Port
     public class Test_TM_Rest_Hosted : TM_Rest_Hosted
     {
         [SetUp] public static void Initialize()
