@@ -53,9 +53,12 @@ var getGuidFromUrl = function () {
 //                alert(getGuidanceIdfromUrl());
 
 var previewEditorCode = function () {
+    if (window.opener === undefined || window.opener === null || window.opener.GetEditedLibraryItemCode === undefined) {
+        showError("Sorry, we couldn't find the edited article.");
+        return;
+    }
 
     previewGuidanceItem(window.opener.GetEditedLibraryItemCode(), showEditorPreview);
-
 }
 
 var showEditorPreview = function (data) {
@@ -102,10 +105,7 @@ showGuidanceItemData = function (data) {
         }
     }
     else {
-        "ItemContent".$().hide();
-        "#Title".$().html("").append("<h4>Sorry, we couldn't find the requested article.</h4>" +
-        //"<h4>Why don't you <a href='/create/" + mappingText +"'>create it</a></h4>"
-                                                     "");
+        showError("Sorry, we couldn't find the requested article.");
         "CategoriesLabel".$().html("");
         "PhaseLabel".$().html("");
         "TechnologyLabel".$().html("");
@@ -113,6 +113,12 @@ showGuidanceItemData = function (data) {
         //"DateLabel".$().html("");
         showGuidanceItemHtml("");
     }
+}
+
+var showError = function(message) {
+    "ItemContent".$().hide();
+    "#Title".$().html("").append("<h4>" + message +"</h4>");
+
 }
 
 var fixGuidanceItemLinks = function () {
