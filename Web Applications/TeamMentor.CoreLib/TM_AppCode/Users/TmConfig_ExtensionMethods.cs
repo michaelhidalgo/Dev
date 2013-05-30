@@ -75,33 +75,7 @@ namespace TeamMentor.CoreLib
 
             return xmlDatabasePath;
         }
-        public static string getGitUserConfigFile(this TMConfig tmConfig)           // git user
-        {
-            
-            return (TMConfig.Location.valid()) 
-                        ? TMConfig.Location.parentFolder().pathCombine(TMConsts.GIT_USERDATA_FILENAME)
-                        : "";
-        }
-        public static bool      setGitUserConfigFile(this TMConfig tmConfig, string gitUserConfig_Data)
-        {
-            try
-            {
-                var gitUserConfigFile = tmConfig.getGitUserConfigFile();
-                if (gitUserConfig_Data.notValid() && gitUserConfigFile.fileExists())
-                {
-                    "[setGitUserConfigFile] Deleting current gitUserconfigFile: {0}".info(gitUserConfigFile);
-                    gitUserConfigFile.file_Delete();
-                }
-                else
-                    gitUserConfig_Data.saveAs(gitUserConfigFile);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                ex.log("[setGitUserConfigFile]");
-                return false;
-            }            
-        }
+        
         public static DateTime  currentExpirationDate(this TMConfig tmConfig)
         {
             return (tmConfig.TMSecurity.EvalAccounts_Enabled)

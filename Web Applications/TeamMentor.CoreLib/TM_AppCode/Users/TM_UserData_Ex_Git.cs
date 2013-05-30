@@ -58,7 +58,7 @@ namespace TeamMentor.CoreLib
             if (userData.tmConfig().Git.UserData_Auto_Push.isFalse())           //skip if this is set
                 return userData;
 
-            if (MiscUtils.runningOnLocalHost() && TMConfig.Current.getGitUserConfigFile().valid())  //don't push local changes in order to prevent git merge conflicts            
+            if (MiscUtils.runningOnLocalHost())  //don't push local changes in order to prevent git merge conflicts            
             {
                 "[triggerGitCommit] skipping because it is a local request and getGitUserConfigFile is set".info();
                 return userData;
@@ -79,7 +79,8 @@ namespace TeamMentor.CoreLib
                 if (userData.tmConfig().Git.UserData_Auto_Pull.isFalse()) //skip if this is set     
                     return userData;
 
-                var gitLocationFile = TMConfig.Current.getGitUserConfigFile();
+                //var gitLocationFile = TMConfig.Current.getGitUserConfigFile();
+                var gitLocationFile = TM_Xml_Database.Current.getGitUserConfigFile();
                 if (gitLocationFile.fileExists())
                 {
                     "[TM_UserData][handleExternalGitPull] found gitConfigFile: {0}".info(gitLocationFile);

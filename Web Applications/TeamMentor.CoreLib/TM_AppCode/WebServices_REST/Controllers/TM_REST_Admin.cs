@@ -133,11 +133,11 @@ namespace TeamMentor.CoreLib
         }
         [Admin] public string        Get_GitUserConfig()
         {
-            return TMConfig.Current.getGitUserConfigFile().fileContents();
+            return TM_Xml_Database.Current.getGitUserConfigFile().fileContents();
         }
         [Admin] public bool          Set_GitUserConfig(string gitUserConfig_Data)
         {            
-            return TMConfig.Current.setGitUserConfigFile(gitUserConfig_Data);   
+            return  TM_Xml_Database.Current.setGitUserConfigFile(gitUserConfig_Data);   
         }
         [Admin] public string        FirstScript_FileContents()
         {
