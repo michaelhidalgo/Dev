@@ -25,36 +25,5 @@ namespace TeamMentor.CoreLib
             Files.copyFolder(sourceFolder, targetFolder,true,true,"");            
             return true;
         }
-
-        public static string getGitUserConfigFile(this TM_Xml_Database tmDatabase)         
-        {
-            return (tmDatabase.notNull() && tmDatabase.UsingFileStorage)
-                        ? tmDatabase.Path_XmlDatabase.pathCombine(TMConsts.GIT_USERDATA_FILENAME) 
-                        : "";
-            //return (TMConfig.Location.valid())
-//                        ? TMConfig.Location.parentFolder().pathCombine(TMConsts.GIT_USERDATA_FILENAME)
-  //                      : "";
-        }
-
-        public static bool setGitUserConfigFile(this TM_Xml_Database tmDatabase, string gitUserConfig_Data)
-        {
-            try
-            {
-                var gitUserConfigFile = tmDatabase.getGitUserConfigFile();
-                if (gitUserConfig_Data.notValid() && gitUserConfigFile.fileExists())
-                {
-                    "[setGitUserConfigFile] Deleting current gitUserconfigFile: {0}".info(gitUserConfigFile);
-                    gitUserConfigFile.file_Delete();
-                }
-                else
-                    gitUserConfig_Data.saveAs(gitUserConfigFile);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                ex.log("[setGitUserConfigFile]");
-                return false;
-            }
-        }
     }
 }

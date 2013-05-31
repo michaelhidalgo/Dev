@@ -131,14 +131,14 @@ namespace TeamMentor.CoreLib
         {
             return TmWebServices.XmlDatabase_ReloadData();	        
         }
-        [Admin] public string        Get_GitUserConfig()
+        /*[Admin] public string        Get_GitUserConfig()
         {
             return TM_Xml_Database.Current.getGitUserConfigFile().fileContents();
         }
         [Admin] public bool          Set_GitUserConfig(string gitUserConfig_Data)
         {            
             return  TM_Xml_Database.Current.setGitUserConfigFile(gitUserConfig_Data);   
-        }
+        }*/
         [Admin] public string        FirstScript_FileContents()
         {
             return TM_UserData.Current.firstScript_FileLocation().fileContents();

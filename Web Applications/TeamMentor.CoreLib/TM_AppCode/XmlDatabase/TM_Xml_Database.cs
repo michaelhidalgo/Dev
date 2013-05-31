@@ -13,7 +13,8 @@ namespace TeamMentor.CoreLib
         public static TM_Xml_Database   Current               { get; set; }         
         public static bool              SkipServerOnlineCheck { get; set; }        
 
-        public bool			            UsingFileStorage	  { get; set; }         //config           
+        public TMServer                 TM_Server_Config      { get; set; }         //config           
+        public bool			            UsingFileStorage	  { get; set; }         
         public bool                     ServerOnline          { get; set; }                 
         public TM_UserData              UserData              { get; set; }         //users and tracking             
         public List<API_NGit>           NGits                 { get; set; }         // Git object, one per library that has git support
@@ -59,6 +60,7 @@ namespace TeamMentor.CoreLib
             GuidanceItems_FileMappings  = new Dictionary<Guid, string>();
             GuidanceExplorers_XmlFormat = new Dictionary<Guid, guidanceExplorer>();
             GuidanceExplorers_Paths     = new Dictionary<guidanceExplorer, string>();
+            TM_Server_Config            = new TMServer();
             UserData                    = new TM_UserData(UsingFileStorage);                        
             return this;
         }
