@@ -6,7 +6,6 @@ using FluentSharp;
 using O2.DotNetWrappers.ExtensionMethods;
 using O2.DotNetWrappers.DotNet;
 using O2.DotNetWrappers.Windows;
-using TeamMentor.CoreLib.TM_AppCode.Utils;
 
 
 namespace TeamMentor.CoreLib
@@ -338,7 +337,7 @@ namespace TeamMentor.CoreLib
         }
         [EditArticles]public static TeamMentor_Article xmlDB_Preview_Article(this TeamMentor_Article article)
         {
-            new LibraryItemSanitizer().Sanitize(article);
+            article.sanitize();
             
             return article;
         }
@@ -350,8 +349,7 @@ namespace TeamMentor.CoreLib
                 return false;
             }                         
                         
-           LibraryItemSanitizer libraryItemSanitizer = new LibraryItemSanitizer();
-           libraryItemSanitizer.Sanitize(article);
+            article.sanitize();
       
             article.Metadata.Library_Id = libraryId;                                    // ensure the LibraryID is correct
 

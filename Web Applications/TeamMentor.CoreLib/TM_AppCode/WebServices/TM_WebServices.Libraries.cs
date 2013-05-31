@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using FluentSharp;
 using System.Web.Services;
 using O2.DotNetWrappers.ExtensionMethods;
-using TeamMentor.CoreLib.TM_AppCode.Utils;
 
 namespace TeamMentor.CoreLib
 {
