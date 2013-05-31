@@ -61,7 +61,6 @@ namespace TeamMentor.CoreLib
                         ? tmDatabase.Path_XmlDatabase.pathCombine(TMConsts.TM_Server_FILENAME)
                         : null;            
         }
-
         public static TMServer load_TMServer_Config(this TM_Xml_Database tmDatabase)
         {
             if (tmDatabase.UsingFileStorage)
@@ -70,23 +69,30 @@ namespace TeamMentor.CoreLib
                 if (tmServerFile.valid())
                 {
                     if (tmServerFile.fileExists().isFalse())
-                        tmDatabase.TM_Server_Config.saveAs(tmServerFile);
-                    else
-                        tmDatabase.TM_Server_Config = tmServerFile.load<TMServer>();
+                        new TMConfig().saveAs(tmServerFile);
+                    
+                    tmDatabase.TM_Server_Config = tmServerFile.load<TMServer>();
                 }
             }
             return tmDatabase.TM_Server_Config;
         }
-
-        public static TM_Xml_Database save_TMServer_Config(this TM_Xml_Database tmDatabase)
+        public static bool save_TMServer_Config(this TM_Xml_Database tmDatabase)
         {
-            if (tmDatabase.UsingFileStorage)
-            {                            
-                var tmServerFile = tmDatabase.get_Path_TMServer_Config();
-                if (tmServerFile.valid())
-                    tmDatabase.TM_Server_Config.saveAs(tmServerFile);
+            try
+            {
+                if (tmDatabase.UsingFileStorage)
+                {
+                    var tmServerFile = tmDatabase.get_Path_TMServer_Config();
+                    if (tmServerFile.valid())
+                        tmDatabase.TM_Server_Config.saveAs(tmServerFile);
+                }
+                return true;
             }
-            return tmDatabase;
+            catch (Exception ex)
+            {
+                ex.log("in save_TMServer_Config");
+                return false;
+            }            
         }
     }
 }

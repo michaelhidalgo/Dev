@@ -21,6 +21,6 @@ namespace TeamMentor.CoreLib
         public string Name { get; set; }
         public string GitPath { get; set; }
         public string Local_SHA1 { get; set; }
-        public string Remove_SHA1 { get; set; }
+        public string Remote_SHA1 { get; set; }
     }
 }

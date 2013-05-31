@@ -81,11 +81,12 @@ namespace TeamMentor.CoreLib
         [Admin] public void TM_Setup_Thread()
         {
             try
-            {
-                ResetDatabase();
+            {                
+                ResetDatabase();                
                 if (UsingFileStorage)
                 {
                     SetPaths_UserData();
+                    this.load_TMServer_Config();
                 }
                 UserData.SetUp();
                 this.copy_FilesIntoWebRoot();

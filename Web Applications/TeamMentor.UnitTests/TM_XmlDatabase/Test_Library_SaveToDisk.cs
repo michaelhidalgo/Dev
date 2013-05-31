@@ -13,7 +13,7 @@ namespace TeamMentor.UnitTests.TM_XmlDatabase
 
         public Test_Library_SaveToDisk()
         {
-            TMConfig.BaseFolder = "temp_BaseFolder".tempDir();  // set temp folder for UnitTests
+            TMConfig.WebRoot = "temp_BaseFolder".tempDir();  // set temp folder for UnitTests
             tmDatabase = new TM_Xml_Database(true);          // with the useFileStorage set to true
         }
 

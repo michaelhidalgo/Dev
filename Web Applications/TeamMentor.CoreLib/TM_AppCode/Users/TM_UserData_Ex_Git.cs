@@ -78,15 +78,9 @@ namespace TeamMentor.CoreLib
                 if (gitConfig.UserData_Git_Enabled.isFalse())
                     return userData;
 
-                var gitLocationFile = TM_Xml_Database.Current.TM_Server_Config.getActive_UserData_Repo_GitPath();
-                if (gitLocationFile.fileExists())
-                {
-                    "[TM_UserData][handleExternalGitPull] found gitConfigFile: {0}".info(gitLocationFile);
-                    var gitLocation = gitLocationFile.fileContents();
-                    if (gitLocation.notValid())
-                        return userData;
-                    
-
+                var gitLocation = TM_Xml_Database.Current.TM_Server_Config.getActive_UserData_Repo_GitPath();
+                if (gitLocation.valid())
+                {                       
                     //Adjust Path_UserData so that there is an unique folder per repo
                     var extraFolderName = "_Git_";
                     

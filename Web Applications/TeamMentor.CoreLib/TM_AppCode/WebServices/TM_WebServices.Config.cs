@@ -63,6 +63,7 @@ namespace TeamMentor.CoreLib
                                                                                                         return (string)session["webEditorSecretData"];
                                                                                                         */
                                                                                                     }						
+
         [WebMethod(EnableSession = true)] [Admin]	            public string		TMConfigFileLocation()			{	return TMConfig.Location;  }		
         [WebMethod(EnableSession = true)] [Admin]	            public TMConfig		TMConfigFile()
                                                                                     {	
@@ -73,6 +74,17 @@ namespace TeamMentor.CoreLib
                                                                                         TMConfig.Current = tmConfig;
                                                                                         return TMConfig.Current.SaveTMConfig();
                                                                                     }
+        [WebMethod(EnableSession = true)] [Admin]	            public string		TMServerFileLocation()			{	return tmXmlDatabase.get_Path_TMServer_Config();  }		
+        [WebMethod(EnableSession = true)] [Admin]	            public TMServer		TMServerFile()
+                                                                                    {	
+                                                                                        return tmXmlDatabase.TM_Server_Config;  
+                                                                                    }
+        [WebMethod(EnableSession = true)] [Admin]	            public bool		    SetTMServerFile(TMServer tmServer)
+                                                                                    {
+                                                                                        tmXmlDatabase.TM_Server_Config = tmServer;
+                                                                                        return tmXmlDatabase.save_TMServer_Config();                                                                                        
+                                                                                    }
+
         [WebMethod(EnableSession = true)] [Admin]	            public string		Get_Libraries_Zip_Folder()
                                                                                     {
                                                                                         var librariesZipsFolder = TMConfig.Current.TMSetup.LibrariesUploadedFiles;
@@ -143,7 +155,7 @@ namespace TeamMentor.CoreLib
                                                                                     {
                                                                                         return TM_Xml_Database.Current.get_GuidRedirect(id);																						
                                                                                     }				
-        [WebMethod(EnableSession = true)] [ReadArticles]                        public TeamMentor_Article		VirtualArticle_CreateArticle_from_ExternalServiceData(string service, string serviceData)
+        [WebMethod(EnableSession = true)] [ReadArticles]        public TeamMentor_Article		    VirtualArticle_CreateArticle_from_ExternalServiceData(string service, string serviceData)
                                                                                     {
                                                                                         return service.createArticle_from_ExternalServiceData(serviceData);																						
                                                                                     }
