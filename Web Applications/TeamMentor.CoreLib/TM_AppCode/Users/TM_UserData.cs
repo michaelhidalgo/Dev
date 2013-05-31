@@ -14,8 +14,7 @@ namespace TeamMentor.CoreLib
         public string 	                Path_UserData 	    { get; set; }	
         public string 	                Path_UserData_Base 	{ get; set; }
         public string 	                Path_WebRootFiles   { get; set; }
-        public string                   FirstScriptToInvoke { get; set; }
-        public string 	                Git_UserData 	    { get; set; }
+        public string                   FirstScriptToInvoke { get; set; }        
         public List<TMUser>	            TMUsers			    { get; set; }
         public TM_SecretData            SecretData          { get; set; }
         
@@ -48,7 +47,7 @@ namespace TeamMentor.CoreLib
         {
             try
             {
-                this.setupGitSupport();
+                this.setupGitSupportAndLoadTMConfigFile();
                 this.firstScript_Invoke();                
                 SecretData = this.secretData_Load();                
             }

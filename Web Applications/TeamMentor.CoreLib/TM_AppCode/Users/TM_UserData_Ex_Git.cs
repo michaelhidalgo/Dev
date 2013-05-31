@@ -7,19 +7,17 @@ namespace TeamMentor.CoreLib
 {
     public static class TM_UserData_Ex_Git
     {
-        public static TM_UserData   setupGitSupport  (this TM_UserData userData)
+        public static TM_UserData   setupGitSupportAndLoadTMConfigFile(this TM_UserData userData)
         {            
             if (userData.UsingFileStorage && userData.Path_UserData.notNull())
             {
-                userData.handle_UserData_ConfigActions();
+                userData.load_UserData_FromGitRepo();               // will create the custom UserData repo clone (if mapped)
+                userData.load_TMConfigFile();                       // loads the user configured TMConfig.Config file (from either the default or the custom UserData folder)
 
                 var gitEnabled = userData.tmConfig().Git.UserData_Git_Enabled;                
 
                 if (gitEnabled)
-                { 
-                    userData.handle_External_GitPull();
-                    userData.handle_UserData_ConfigActions();               // run this again in case it was changed from the git pull           
-                
+                {                                                         
                     if (userData.Path_UserData.isGitRepository())
                     {
                         //"[TM_UserData][setupGitSupport] open repository: {0}".info(userData.Path_UserData);
@@ -37,12 +35,12 @@ namespace TeamMentor.CoreLib
             }
             return userData;
         }
-        public static TMUser        triggerGitCommit (this TMUser tmUser)
+        public static TMUser        triggerGitCommit                  (this TMUser tmUser)
         {
             TM_UserData.Current.triggerGitCommit();
             return tmUser;
         }
-        public static TM_UserData   triggerGitCommit (this TM_UserData userData)
+        public static TM_UserData   triggerGitCommit                  (this TM_UserData userData)
         {
             if (userData.tmConfig().Git.UserData_Git_Enabled && userData.NGit.notNull())
                 if (userData.NGit.status().valid())
@@ -53,7 +51,7 @@ namespace TeamMentor.CoreLib
                 }
             return userData;
         }
-        public static TM_UserData   pushUserRepository(this TM_UserData userData, API_NGit nGit)
+        public static TM_UserData   pushUserRepository                (this TM_UserData userData, API_NGit nGit)
         {
             if (userData.tmConfig().Git.UserData_Auto_Push.isFalse())           //skip if this is set
                 return userData;
@@ -72,14 +70,14 @@ namespace TeamMentor.CoreLib
                     });
             return userData;
         }
-        public static TM_UserData   handle_External_GitPull      (this TM_UserData userData)
+        public static TM_UserData   load_UserData_FromGitRepo         (this TM_UserData userData)
         {
             try
             {
-                if (userData.tmConfig().Git.UserData_Auto_Pull.isFalse()) //skip if this is set     
+                var gitConfig = userData.tmConfig().Git;
+                if (gitConfig.UserData_Git_Enabled.isFalse())
                     return userData;
-
-                //var gitLocationFile = TMConfig.Current.getGitUserConfigFile();
+                                
                 var gitLocationFile = TM_Xml_Database.Current.getGitUserConfigFile();
                 if (gitLocationFile.fileExists())
                 {
@@ -103,11 +101,13 @@ namespace TeamMentor.CoreLib
                         return userData;
 
                     if (userData.Path_UserData.isGitRepository())
-                    {                        
+                    {
+                        if (gitConfig.UserData_Auto_Pull.isFalse())     //skip if this is set     
+                            return userData;
+
                         "[TM_UserData][GitPull]".info();
                         var nGit = userData.Path_UserData.git_Pull();
                         userData.pushUserRepository(nGit);
-
                     }
                     else
                     {

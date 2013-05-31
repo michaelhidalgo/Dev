@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using O2.DotNetWrappers.ExtensionMethods;
 using O2.DotNetWrappers.Windows;
 

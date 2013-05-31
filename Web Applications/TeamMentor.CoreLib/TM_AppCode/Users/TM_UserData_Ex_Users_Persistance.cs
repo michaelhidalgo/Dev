@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Security.Application;
-using O2.DotNetWrappers.DotNet;
 using O2.DotNetWrappers.ExtensionMethods;
-using O2.FluentSharp;
 
 namespace TeamMentor.CoreLib
 {
@@ -115,9 +113,9 @@ namespace TeamMentor.CoreLib
             "[updateTmUser] provided username didn't match provided tmUser".error();
             return false;
         }
-        
 
-        public static TM_UserData   handle_UserData_ConfigActions(this TM_UserData userData)
+
+        public static TM_UserData load_TMConfigFile(this TM_UserData userData)
         {            
             TMConfig.Location = userData.Path_UserData.pathCombine(TMConsts.TM_CONFIG_FILENAME);
             var userConfigFile = TMConfig.Location; 

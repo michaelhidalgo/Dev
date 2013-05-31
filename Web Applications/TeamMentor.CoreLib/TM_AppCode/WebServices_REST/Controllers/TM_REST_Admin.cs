@@ -123,8 +123,8 @@ namespace TeamMentor.CoreLib
         }
         [Admin] public bool          Reload_TMConfig()
         {
-            TMConfig.Current.reloadConfig();                          // load default one
-            TM_UserData.Current.handle_UserData_ConfigActions();    // load (if available) from current UserData location
+            TMConfig.Current.reloadConfig();                    // load default one
+            //TM_UserData.Current.loadTmUserData();               // load (if available) from current UserData location
             return true;
         }
         [Admin] public string        Reload_Cache()

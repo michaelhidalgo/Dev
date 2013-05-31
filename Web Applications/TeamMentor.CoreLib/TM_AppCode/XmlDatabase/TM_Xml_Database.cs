@@ -124,6 +124,7 @@ namespace TeamMentor.CoreLib
                 }
                 UserData.Path_UserData      = userDataPath;   
                 UserData.Path_UserData_Base = userDataPath;   // we need to keep an copy of this since the Path_UserData might change with git usage
+                Path_XmlDatabase            = xmlDatabasePath;
             }        
             catch(Exception ex)
             {
