@@ -69,7 +69,7 @@ namespace TeamMentor.CoreLib
                 if (tmServerFile.valid())
                 {
                     if (tmServerFile.fileExists().isFalse())
-                        new TMConfig().saveAs(tmServerFile);
+                        new TMServer().saveAs(tmServerFile);
                     
                     tmDatabase.TM_Server_Config = tmServerFile.load<TMServer>();
                 }
