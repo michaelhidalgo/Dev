@@ -1,0 +1,47 @@
+﻿@using System.Web.Mvc.Html
+@using System.Web.Mvc
+@inherits WebViewPage
+
+@{
+    ViewBag.Title = "Edit Markdown page";
+    Layout = "_Layout.cshtml";    
+}
+
+<link rel="stylesheet" type="text/css" href="/javascript/MarkdownDeep/mdd_styles.css" />
+<script type="text/javascript" src="/Javascript/jQuery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/javascript/MarkdownDeep/MarkdownDeepLib.min.js"></script>
+
+<script type="text/javascript">
+    $(function ()
+        {            
+            $("textarea.mdd_editor").MarkdownDeep({
+                help_location:"/javascript/MarkdownDeep/mdd_help.htm",                
+                ExtraMode: false,
+                SafeMode: true
+            });
+        })
+</script>
+
+
+<form action="/Markdown/Editor" method="post">
+    <h5>Editor: </h5>   
+    <div class="mdd_toolbar"></div>   
+    <input name="articleId" value="@ViewBag.ArticleId" type="hidden"/>
+    @Html.TextArea("Content", new { @class="mdd_editor",rows=5})
+    <div class="mdd_resizer"></div>
+      
+    <p>
+        <h5>Preview: </h5>    
+    </p> 
+    
+    
+    <div class="well mdd_preview"></div>
+
+    
+    <p><input class="btn btn-primary" type="submit" value="Save" /></p>
+
+</form>
+
+
+
+

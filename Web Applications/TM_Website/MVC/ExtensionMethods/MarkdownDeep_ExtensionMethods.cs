@@ -1,6 +1,4 @@
-﻿using System.Web.Mvc;
-
-namespace TeamMentor.Website
+﻿namespace TeamMentor.Website
 {
 	public static class MarkdownDeepExtensions
 	{        

@@ -9,8 +9,8 @@ namespace SecurityInnovation.TeamMentor.Website.App_Code
         {            
             AreaRegistration.RegisterAllAreas();            
             RouteTable.Routes.MapRoute("Default", 
-                                       "{controller}/{action}", 
-                                       new  {action = "FirstAction" });
+                                       "{controller}/{action}/{id}",
+                                       new { action = "FirstAction", id = UrlParameter.Optional });
         }
     }
 }
