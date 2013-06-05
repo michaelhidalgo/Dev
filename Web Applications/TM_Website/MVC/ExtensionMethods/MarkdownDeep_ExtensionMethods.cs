@@ -7,7 +7,7 @@
 		    var md = new MarkdownDeep.Markdown
 		                 {
                              SafeMode = true,       // was false in the MarkdownDeep demo app
-                             ExtraMode = false,     // was true in the MarkdownDeep demo app
+                             ExtraMode = true,      
                              AutoHeadingIDs = true, 
                              MarkdownInHtml = true, 
                              NewWindowForExternalLinks = true

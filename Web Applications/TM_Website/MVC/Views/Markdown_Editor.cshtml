@@ -16,14 +16,14 @@
         {            
             $("textarea.mdd_editor").MarkdownDeep({
                 help_location:"/javascript/MarkdownDeep/mdd_help.htm",                
-                ExtraMode: false,
+                ExtraMode: true,
                 SafeMode: true
             });
         })
 </script>
 
 
-<form action="/Markdown/Editor" method="post">
+<form action="/Markdown/SaveContent" method="post">
     <h5>Editor: </h5>   
     <div class="mdd_toolbar"></div>   
     <input name="articleId" value="@ViewBag.ArticleId" type="hidden"/>

@@ -6,13 +6,11 @@ using TeamMentor.CoreLib;
 namespace TeamMentor.Website
 {
     public class MarkdownController : Controller
-    {
-        //public static Guid              testArticleGuid;
+    {        
         public static TM_Xml_Database   tmDatabase;
 
         static MarkdownController()
-        {
-             //testArticleGuid = "0736d6f3-976f-421b-b5b9-053b97470b75".guid();
+        {             
              tmDatabase = TM_Xml_Database.Current;
         }
 
@@ -22,16 +20,16 @@ namespace TeamMentor.Website
             return article;
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Editor(string articleId, string content)
+        //view article
+        public ActionResult Viewer(string articleId)
         {
-            var article = getArticle(articleId);
-            article.Content.Data.Value = content;
-            article.xmlDB_Save_Article(tmDatabase);
+            var markdownToRender = getArticle(articleId).Content.Data_Json;
+            ViewData["Content"] = markdownToRender.renderMarkdown();
+            ViewData["ArticleId"] = articleId;
+            return View(@"~/MVC/Views/MarkDown_Viewer.cshtml");
+        }
 
-            return Redirect("Viewer?articleId={0}".format(articleId));
-        }        
-
+        //show article editor        
         public ActionResult Editor(string articleId)
         {
             var article = getArticle(articleId);
@@ -43,12 +41,16 @@ namespace TeamMentor.Website
             return View(@"~/MVC/Views/MarkDown_Editor.cshtml");
         }
 
-        public ActionResult Viewer(string articleId)
+        //receive article content and update article
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult SaveContent(string articleId, string content)
         {
-            var markdownToRender = getArticle(articleId).Content.Data_Json;            
-            ViewData["Content"] = markdownToRender.renderMarkdown();
-            ViewData["ArticleId"] = articleId;
-            return View(@"~/MVC/Views/MarkDown_Viewer.cshtml");
+            var article = getArticle(articleId);
+            article.Content.Data.Value = content;
+            article.xmlDB_Save_Article(tmDatabase);
+
+            return Redirect("Viewer?articleId={0}".format(articleId));
         }
+            
     }
 }
