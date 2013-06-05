@@ -19,27 +19,24 @@
                 ExtraMode: true,
                 SafeMode: true
             });
+            $("#backToArticle").click(function()
+                {
+                    document.location = "/article/@ViewBag.ArticleId";
+                });  
         })
 </script>
 
 
 <form action="/Markdown/SaveContent" method="post">
-    <h5>Editor: </h5>   
+    
+    <h3>Markdown Editor</h3>       
+    <input class="btn btn-Info" type="button" value="Back to article" id="backToArticle" />    
+    <input class="btn btn-primary" type="submit" value="Save" />
     <div class="mdd_toolbar"></div>   
     <input name="articleId" value="@ViewBag.ArticleId" type="hidden"/>
-    @Html.TextArea("Content", new { @class="mdd_editor",rows=5})
+    @Html.TextArea("Content", new { @class="mdd_editor",rows=10})
     <div class="mdd_resizer"></div>
-      
-    <p>
-        <h5>Preview: </h5>    
-    </p> 
-    
-    
     <div class="well mdd_preview"></div>
-
-    
-    <p><input class="btn btn-primary" type="submit" value="Save" /></p>
-
 </form>
 
 

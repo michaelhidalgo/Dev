@@ -1,8 +1,8 @@
-﻿namespace TeamMentor.Website
+﻿namespace TeamMentor.CoreLib
 {
 	public static class MarkdownDeepExtensions
 	{        
-		public static string renderMarkdown(this string markdown)
+		public static string markdown_transform(this string markdown)
 		{						
 		    var md = new MarkdownDeep.Markdown
 		                 {

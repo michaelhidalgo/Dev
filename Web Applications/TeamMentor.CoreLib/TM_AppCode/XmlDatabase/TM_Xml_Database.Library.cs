@@ -71,6 +71,8 @@ namespace TeamMentor.CoreLib
                     }
                 case "wikitext":
                     return "<div id ='tm_datatype_wikitext'>{0}</div>".format(articleContent);
+                case "markdown":
+                    return articleContent.markdown_transform();
                 default:
                     return articleContent;
             }			

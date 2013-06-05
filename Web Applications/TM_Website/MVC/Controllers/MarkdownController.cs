@@ -24,7 +24,7 @@ namespace TeamMentor.Website
         public ActionResult Viewer(string articleId)
         {
             var markdownToRender = getArticle(articleId).Content.Data_Json;
-            ViewData["Content"] = markdownToRender.renderMarkdown();
+            ViewData["Content"] = markdownToRender.markdown_transform();
             ViewData["ArticleId"] = articleId;
             return View(@"~/MVC/Views/MarkDown_Viewer.cshtml");
         }
@@ -49,7 +49,9 @@ namespace TeamMentor.Website
             article.Content.Data.Value = content;
             article.xmlDB_Save_Article(tmDatabase);
 
-            return Redirect("Viewer?articleId={0}".format(articleId));
+            return Redirect("/article/{0}".format(articleId));
+
+            //return Redirect("Viewer?articleId={0}".format(articleId));
         }
             
     }

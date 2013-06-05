@@ -90,11 +90,16 @@ showGuidanceItemData = function (data) {
             "TechnologyLabel".$().html(loadedGuidanceItem.Metadata.Technology);
             "GuidanceTypeLabel".$().html(loadedGuidanceItem.Metadata.Type);
         }
-        if (loadedGuidanceItem.Content.DataType.toLowerCase() === "wikitext") {
+        if (loadedGuidanceItem.Content.DataType.toLowerCase() === "markdown")
+        {
+            showGuidanceItemMarkdown(loadedGuidanceItem.Content.Data_Json);
+        } 
+        else if (loadedGuidanceItem.Content.DataType.toLowerCase() === "wikitext")
+        {
             showGuidanceItemWikiText(loadedGuidanceItem.Content.Data_Json);
             $("#Edit_WYSIWYG").html("Edit WikiText");
-        }
-        else {
+        } else
+        {
             showGuidanceItemHtml(loadedGuidanceItem.Content.Data_Json);
             $("#Edit_WYSIWYG").html("Edit WYSIWYG");
         }
@@ -143,12 +148,18 @@ var fixGuidanceItemLinks = function () {
 
 };
 
-showGuidanceItemWikiText = function (wikiText) {
+showGuidanceItemMarkdown = function(markdownText)
+{
+    TM.WebServices.WS_Utils.markdownTransform(markdownText,showGuidanceItemHtml);    
+};
+
+showGuidanceItemWikiText = function(wikiText)
+{
     var targetDiv = document.createElement('div');
-    new creole().parse(targetDiv, wikiText)
+    new creole().parse(targetDiv, wikiText);
     var html = targetDiv.innerHTML;
     showGuidanceItemHtml(html);
-}
+};
 
 showGuidanceItemHtml = function (html) {
     $("#guidanceItem").html(html);
@@ -201,15 +212,20 @@ getSliderData = function () {
     getPagesHistory_by_PageId(guidanceId, showSlider);
 }
 
+var openGuidanceItemMarkdown = function()
+{
+    document.location = "/Markdown/Editor?articleId=" + guidanceId;
+}
 
-
-var openGuidanceItemEditor = function () {
+var openGuidanceItemEditor = function () 
+{
     //document.location = "EditGuidanceItem.aspx?#id:" + guidanceId;
     //document.location = "/html_pages/GuidanceItemEditor/GuidanceItemEditor.html?#id:" + guidanceId;
     document.location = "/editor/" + guidanceId;
 }
 
-var openGuidanceItemNotepad = function () {
+var openGuidanceItemNotepad = function () 
+{
     //document.location = "EditGuidanceItem.aspx?#id:" + guidanceId;
     document.location = "/notepad/" + guidanceId;
 }
