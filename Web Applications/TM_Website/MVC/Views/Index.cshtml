@@ -1,13 +1,17 @@
-﻿@inherits System.Web.Mvc.WebViewPage
+﻿@using TeamMentor.Website
+@using System.Web.Mvc
+
+@inherits WebViewPage
 
 @{
     ViewBag.Title = "This is the page Title";
     Layout = "_Layout.cshtml";
+    var markdownToRender = (string) ViewBag.MarkDownText;
 }
 
 <h5>@ViewBag.HelloMessage</h5>
 
-<pre>
-    this is some text relevant to this view
-</pre>
+
+@Html.Raw(markdownToRender.renderMarkdown())
+
 

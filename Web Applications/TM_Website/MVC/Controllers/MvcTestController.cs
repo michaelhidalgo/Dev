@@ -3,16 +3,17 @@
 namespace TeamMentor.Website
 {
     public class MvcTestController : Controller
-    {
-        public ActionResult FirstAction()
+    {        
+        public ActionResult Transform()
         {
-            ViewBag.HelloMessage = "Hello from the Controller";
-            return View(@"~/MVC/Views/Index.cshtml");
-        }
+            ViewBag.MarkDownText = 
+@"## A title
 
-        public ActionResult SecondAction()
-        {
-            ViewBag.HelloMessage = "This is the SecondAction";
+created in Markdown
+
+* item 1
+* item 2
+* item 3";
             return View(@"~/MVC/Views/Index.cshtml");
         }
     }

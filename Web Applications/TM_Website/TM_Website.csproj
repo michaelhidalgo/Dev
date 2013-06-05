@@ -609,6 +609,7 @@
     <Content Include="Javascript\_mappings\HomePage_JS.txt" />
     <Content Include="Javascript\_mappings\HomePage_JS_TM.txt" />
     <Content Include="App_Code\MVC_Config.cs" />
+    <Compile Include="MVC\ExtensionMethods\MarkdownDeep_ExtensionMethods.cs" />
     <Compile Include="MVC\Controllers\MvcTestController.cs" />
     <Content Include="TBot\Tests\hello.cshtml" />
     <Content Include="TBot\Tests\theTime.cshtml" />
