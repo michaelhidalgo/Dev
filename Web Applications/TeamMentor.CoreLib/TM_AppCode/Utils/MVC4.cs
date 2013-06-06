@@ -5,21 +5,16 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace TeamMentor.CoreLib.TM_AppCode.Utils
+namespace TeamMentor.CoreLib
 {
     public class MVC4
-    {
-        public MVC4()
-        {
-            SetUp_ASPNET_MVC();
-        }
-
-        public void SetUp_ASPNET_MVC()
+    {        
+        public static void MapDefaultRoutes()
         {
             //AreaRegistration.RegisterAllAreas();
             RouteTable.Routes.MapRoute("Default",
-                                                   "{controller}/{action}/{id}",
-                                                   new { action = "FirstAction", id = UrlParameter.Optional });
+                                       "{controller}/{action}/{id}",
+                                       new { action = "Index", id = UrlParameter.Optional });
         }
 
 

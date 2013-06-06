@@ -39,8 +39,9 @@ namespace TeamMentor.CoreLib
             //O2_Utils.showLogViewer_if_LocalHost();                
                           
             TmXmlDatabase           = new  TM_Xml_Database(true);                                   // Create FileSystem Based database            
-            TrackingApplication     = new Tracking_Application(TmXmlDatabase.Path_XmlDatabase);    // Enabled Application Tracking
-            TM_REST.SetRouteTable();	// Set REST routes            
+            TrackingApplication     = new Tracking_Application(TmXmlDatabase.Path_XmlDatabase);     // Enabled Application Tracking
+            MVC4.MapDefaultRoutes();                                                                // Add support for ASP.NET MVC Controllers on the TM_Website
+            TM_REST.SetRouteTable();	                                                            // Set REST routes            
             TrackingApplication.saveLog();
         } 
         public void Application_End()
