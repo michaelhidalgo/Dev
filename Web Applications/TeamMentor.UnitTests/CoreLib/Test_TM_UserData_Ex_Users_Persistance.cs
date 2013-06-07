@@ -5,7 +5,7 @@ using TeamMentor.CoreLib;
 namespace TeamMentor.UnitTests.CoreLib
 {
     [TestFixture]
-    internal class Test_TM_UserData_Ex_Users_Persistance
+    internal class Test_TM_UserData_Ex_Users : TM_XmlDatabase_InMemory
     {
         private static TMUser CreateTMUser
         {
@@ -33,11 +33,9 @@ namespace TeamMentor.UnitTests.CoreLib
         [Test]
         public void Can_Update_User_With_Valid_Email()
         {
-            TMUser tmUser = CreateTMUser;
-
-            Assert.Throws(typeof (NullReferenceException),
-                          () =>
-                          tmUser.updateTmUser(tmUser.user()));
+            TMUser tmUser = CreateTMUser;            
+            var result = tmUser.updateTmUser(tmUser.user());
+            Assert.IsTrue(result, "update failed");
         }
 
         [Test]
