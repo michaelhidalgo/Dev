@@ -657,7 +657,7 @@
     <None Include="Html_Pages\ControlPanel\WebEditor\codeMirror\baboon_vector.svg" />
     <Content Include="Html_Pages\ControlPanel\WebEditor\WebEditorService.ashx" />
     <None Include="Javascript\FireBug\skin\xp\roundCorner.svg" />
-    <Compile Include="TBot\Users\Current_Users.cshtml" />
+    <Content Include="TBot\Users\Current_Users.cshtml" />
     <Content Include="TBot\Tests\version.cshtml" />
     <Content Include="TBot\Admin\LiveData\ActiveSessions.cshtml" />
     <Content Include="TBot\Messaging\View_Emails_Sent.cshtml" />
@@ -681,7 +681,7 @@
     <Content Include="TBot\Views\User_View.cshtml" />
     <Content Include="TBot\Views\User_Raw.cshtml" />
     <Content Include="TBot\Dev\exec_Razor.cshtml.txt" />
-    <Compile Include="TBot\LibraryData\Articles.cshtml" />
+    <Content Include="TBot\LibraryData\Articles.cshtml" />
     <Content Include="TBot\Admin\Config\Edit_SecretData.cshtml" />
     <Content Include="TBot\Admin\Reload_Server_Objects.cshtml" />
     <Content Include="TBot\Admin\Config\Edit_GitUserLocation.cshtml" />
