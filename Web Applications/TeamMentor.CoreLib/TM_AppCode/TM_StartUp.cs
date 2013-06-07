@@ -40,8 +40,9 @@ namespace TeamMentor.CoreLib
                           
             TmXmlDatabase           = new  TM_Xml_Database(true);                                   // Create FileSystem Based database            
             TrackingApplication     = new Tracking_Application(TmXmlDatabase.Path_XmlDatabase);     // Enabled Application Tracking
-            MVC4.MapDefaultRoutes();                                                                // Add support for ASP.NET MVC Controllers on the TM_Website
+            
             TM_REST.SetRouteTable();	                                                            // Set REST routes            
+            MVC4.MapDefaultRoutes();                                                                // Add support for ASP.NET MVC Controllers on the TM_Website
             TrackingApplication.saveLog();
         } 
         public void Application_End()
