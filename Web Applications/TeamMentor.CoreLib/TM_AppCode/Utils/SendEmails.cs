@@ -147,7 +147,7 @@ var userMessage =
 
 You can change the password of your {1} account using {3}/passwordReset/{1}/{2}
 
-If you didn't make this request, please let us know at support@teammentor.net.
+If you didn't make this request, please let us know at support@securityinnovation.com.
              ".format(tmUser.fullName(), tmUser.UserName, passwordResetToken,TM_Server_URL);
              
                 SendEmailToEmail(tmUser.EMail, "TeamMentor Password Reset", userMessage);
