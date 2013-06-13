@@ -27,3 +27,7 @@ Web Applications/TM_Website/bin/*.xml
 /Web Applications/TM_Website/gitUserData.config
 /Web Applications/_ReSharper.TM_Website
 *.ncrunchsolution
+
+*.ncrunchproject
+
+*.cache
