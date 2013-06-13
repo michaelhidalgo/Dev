@@ -73,7 +73,7 @@ namespace TeamMentor.UnitTests.TM_XmlDatabase
 
                         Assert.NotNull  (passwordHash);
                         Assert.AreEqual (64, passwordHash.base64Decode_AsByteArray().size());
-                        Assert.Greater  (2,timeSpan.Seconds , "conversion took more than 2 second");
+                        Assert.Greater  (2,timeSpan.Seconds, "Calculation took more than 2 sec");
                         Assert.Less     (100, timeSpan.TotalMilliseconds); // slowest calculation should be slower than 500 milliseconds                        
                         "ok: {0} : {1}".info(timeSpan.Milliseconds,passwordHash);
                     };
