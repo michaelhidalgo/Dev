@@ -21,9 +21,6 @@ namespace TeamMentor.UnitTests.CoreLib
 
         [Test] public void Check_Install_and_Config()
         {
-
-            
-
             Assert.IsNotNull(apiNodeJs);
             Assert.IsTrue   (nodeJsExeFolder.dirExists(), "virtualPath folder not found: {0}".format(nodeJsExeFolder));
             Assert.IsTrue   (nodeJS_Exe.fileExists(), "exeFromUpdate file didn't exist: {0}".format(nodeJS_Exe));
@@ -41,7 +38,7 @@ namespace TeamMentor.UnitTests.CoreLib
             Assert.AreEqual("v0.6.18\r\n", apiNodeJs.execute("-v"));   // check the version
 
             var evalText = "2+2";
-            var evalExpected = "4\n";
+            var evalExpected = "4";
             var evalResult = apiNodeJs.eval(evalText);
             Assert.AreEqual(evalExpected, evalResult);
 

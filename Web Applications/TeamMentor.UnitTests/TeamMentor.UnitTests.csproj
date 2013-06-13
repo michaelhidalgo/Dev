@@ -79,6 +79,7 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -102,8 +103,8 @@
     <Compile Include="CoreLib\Test_TM_UserData.cs" />
     <Compile Include="CoreLib\Test_Tracking_Application.cs" />
     <Compile Include="Asmx_WebServices\Test_WebServices_Security.cs" />
-    <Compile Include="RequiresPostSharp.cs" />
     <Compile Include="REST_Direct\Test_TBot.cs" />
+    <Compile Include="TM_Website\Test_WebSite_Controllers.cs" />
     <Compile Include="TM_XmlDatabase\Test_Library_SaveToDisk.cs" />
     <Compile Include="TM_XmlDatabase\Test_LoadLibrariesFromDisk.cs" />
     <Compile Include="TM_XmlDatabase\Test_LoadLibraries_FromExternalSource.cs" />
@@ -158,11 +159,17 @@
       <Project>{87BACB04-640F-44ED-8F01-45224D52A883}</Project>
       <Name>TeamMentor.CoreLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TM_Website\TM_Website.csproj">
+      <Project>{898BF99D-2F6E-4900-B22A-0CB48B21EA8C}</Project>
+      <Name>TM_Website</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asmx_WebServices\Test_Authentication.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="NGit_Dlls\ICSharpCode.SharpZipLib.dll" />
     <Content Include="NGit_Dlls\Mono.Posix.dll" />

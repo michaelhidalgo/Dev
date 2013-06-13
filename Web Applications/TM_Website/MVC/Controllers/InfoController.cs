@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SecurityInnovation.TeamMentor.Website.App_Code.Controllers
+namespace TeamMentor.Website
 {
     public class InfoController : Controller
     {

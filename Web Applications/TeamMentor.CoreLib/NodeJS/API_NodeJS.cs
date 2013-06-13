@@ -1,6 +1,4 @@
 ﻿//from the O2.Platform.Scripts API_NodeJS file
-using System;
-using System.Diagnostics;
 using O2.DotNetWrappers.ExtensionMethods;
 using TeamMentor.CoreLib;
 
@@ -55,7 +53,7 @@ namespace FluentSharp
 
         public static string eval(this API_NodeJS nodeJS, string evalScript)
         {
-            return nodeJS.execute("-p -e {0}".format(evalScript));
+            return nodeJS.execute("-p -e {0}".format(evalScript)).trim();
         }
     }
 }

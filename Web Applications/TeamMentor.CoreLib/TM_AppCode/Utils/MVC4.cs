@@ -12,7 +12,7 @@ namespace TeamMentor.CoreLib
         public static void MapDefaultRoutes()
         {
             //AreaRegistration.RegisterAllAreas();
-            RouteTable.Routes.MapRoute("Default",
+            RouteTable.Routes.MapRoute("MVC4_Default",
                                        "{controller}/{action}/{id}",
                                        new { action = "Index", id = UrlParameter.Optional });
         }
