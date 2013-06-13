@@ -57,6 +57,11 @@
       <HintPath>..\packages\FluentSharp.CoreLib.5.0.80\lib\net35\FluentSharp.CoreLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="RazorEngine, Version=3.2.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
@@ -78,6 +83,11 @@
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -667,7 +677,7 @@
     <None Include="Html_Pages\ControlPanel\WebEditor\codeMirror\baboon_vector.svg" />
     <Content Include="Html_Pages\ControlPanel\WebEditor\WebEditorService.ashx" />
     <None Include="Javascript\FireBug\skin\xp\roundCorner.svg" />
-    <Compile Include="TBot\Users\Current_Users.cshtml" />
+    <Content Include="TBot\Users\Current_Users.cshtml" />
     <Content Include="TBot\Tests\version.cshtml" />
     <Content Include="TBot\Admin\LiveData\ActiveSessions.cshtml" />
     <Content Include="TBot\Messaging\View_Emails_Sent.cshtml" />
@@ -693,7 +703,7 @@
     <Content Include="TBot\Views\User_View.cshtml" />
     <Content Include="TBot\Views\User_Raw.cshtml" />
     <Content Include="TBot\Dev\exec_Razor.cshtml.txt" />
-    <Compile Include="TBot\LibraryData\Articles.cshtml" />
+    <Content Include="TBot\LibraryData\Articles.cshtml" />
     <Content Include="TBot\Admin\Config\Edit_SecretData.cshtml" />
     <Content Include="TBot\Admin\Reload_Server_Objects.cshtml" />
     <Content Include="TBot\Admin\Config\Edit_GitUserLocation.cshtml" />
