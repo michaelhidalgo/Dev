@@ -1,5 +1,6 @@
 ﻿@using System.Web.Mvc.Html
 @using System.Web.Mvc
+@using TeamMentor.CoreLib
 @inherits WebViewPage
 
 @{
@@ -17,7 +18,7 @@
             $("textarea.mdd_editor").MarkdownDeep({
                 help_location:"/javascript/MarkdownDeep/mdd_help.htm",                
                 ExtraMode: true,
-                SafeMode: true
+                SafeMode: @(MarkdownDeep_ExtensionMethods.SafeMode ? "true" : "false")
             });
             $("#backToArticle").click(function()
                 {

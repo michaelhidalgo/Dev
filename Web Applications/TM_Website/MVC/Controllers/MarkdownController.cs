@@ -48,6 +48,7 @@ namespace TeamMentor.Website
 
         //receive article content and update article
         [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateInput(false)] 
         public ActionResult SaveContent(string articleId, string content)
         {
             var article = getArticle(articleId);
