@@ -70,16 +70,20 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Posix">
-      <HintPath>_Temp_Dependecies\Mono.Posix.dll</HintPath>
+      <HintPath>..\TeamMentor.UnitTests\NGit_Dlls\Mono.Posix.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Security">
-      <HintPath>_Temp_Dependecies\Mono.Security.dll</HintPath>
+      <HintPath>..\TeamMentor.UnitTests\NGit_Dlls\Mono.Security.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="NGit">
-      <HintPath>_Temp_Dependecies\NGit.dll</HintPath>
+      <HintPath>..\TeamMentor.UnitTests\NGit_Dlls\NGit.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="NSch">
-      <HintPath>_Temp_Dependecies\NSch.dll</HintPath>
+      <HintPath>..\TeamMentor.UnitTests\NGit_Dlls\NSch.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="O2_Platform_External_SharpDevelop">
       <HintPath>_Temp_Dependecies\O2_Platform_External_SharpDevelop.dll</HintPath>
@@ -88,7 +92,8 @@
       <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="Sharpen">
-      <HintPath>_Temp_Dependecies\Sharpen.dll</HintPath>
+      <HintPath>..\TeamMentor.UnitTests\NGit_Dlls\Sharpen.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Web.Abstractions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -771,7 +776,6 @@
     <Folder Include="App_Code\TempControllers\" />
     <Folder Include="Content\codemirror-3.01\" />
     <Folder Include="Javascript\codeMirror\" />
-    <Folder Include="_Temp_Dependecies\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
