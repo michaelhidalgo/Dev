@@ -30,3 +30,9 @@ Web Applications/TM_Website/bin/*.xml
 *.ncrunchsolution
 *.ncrunchproject
 *.cache
+
+*.ndproj
+
+*.sublime-project
+
+*.sublime-workspace

@@ -62,7 +62,7 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="NGit">
-      <HintPath>..\TM_Website\_Temp_Dependecies\NGit.dll</HintPath>
+      <HintPath>..\TeamMentor.UnitTests\NGit_Dlls\NGit.dll</HintPath>
     </Reference>
     <Reference Include="PostSharp, Version=3.0.31.9, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -113,7 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NodeJS\API_NodeJS.cs" />
-    <Compile Include="RequiresPostSharp.cs" />
     <Compile Include="TM_AppCode\Authentication\ExtensionMethods\RoleBaseSecurity_ExtensionMethods.cs" />
     <Compile Include="TM_AppCode\Authentication\ExtensionMethods\TeamMentorUserManagement_ExtensionMethods.cs" />
     <Compile Include="TM_AppCode\O2_Scripts_APIs\MarkdownDeep_ExtensionMethods.cs" />

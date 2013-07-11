@@ -132,6 +132,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AngularJS\Karma\jasmine-1.1.0.js" />
+    <Content Include="AngularJS\Karma\JasmineAdapter-1.1.2.js" />
+    <Content Include="AngularJS\Karma\karma.conf.js" />
+    <Content Include="AngularJS\Tests\AngularJS\Simple.html" />
+    <Content Include="AngularJS\Tests\AngularJS\Simple.Spec.js" />
+    <Content Include="AngularJS\Tests\MarkdownEditor\MarkdownEditor.Spec.js" />
     <Content Include="Aspx_Pages\SetLibrary.aspx" />
     <Content Include="Aspx_Pages\Debug.aspx" />
     <Content Include="Aspx_Pages\images\back_disabled.jpg" />
@@ -662,7 +668,6 @@
     <Content Include="Javascript\_mappings\HomePage_JS.txt" />
     <Content Include="Javascript\_mappings\HomePage_JS_TM.txt" />
     <Compile Include="MVC\Controllers\MarkdownController.cs" />
-    <Content Include="Scripts\codemirror-ui\ui-codemirror.js" />
     <Content Include="TBot\Tests\hello.cshtml" />
     <Content Include="TBot\Tests\theTime.cshtml" />
     <Content Include="TBot\TBotMain.html" />
@@ -774,7 +779,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\TempControllers\" />
-    <Folder Include="Content\codemirror-3.01\" />
     <Folder Include="Javascript\codeMirror\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
