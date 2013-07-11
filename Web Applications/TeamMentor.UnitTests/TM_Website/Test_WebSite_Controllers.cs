@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using FluentSharp;
 using NUnit.Framework;
-using O2.DotNetWrappers.ExtensionMethods;
+using FluentSharp.CoreLib;
 using TeamMentor.CoreLib;
 using TeamMentor.Website;
 

@@ -1,5 +1,6 @@
-﻿using O2.DotNetWrappers.ExtensionMethods;
-using O2.XRules.Database.Utils;
+﻿using FluentSharp.BCL;
+using FluentSharp.REPL;
+using FluentSharp.REPL.Controls;
 
 namespace TeamMentor.UnitTests
 {
