@@ -1,8 +1,8 @@
 using System;
 using System.Threading;
 using System.Web.Script.Serialization;
-using O2.DotNetWrappers.DotNet;
-using O2.DotNetWrappers.ExtensionMethods;
+using FluentSharp.CoreLib;
+using FluentSharp.CoreLib.API;
 
 namespace TeamMentor.CoreLib
 {

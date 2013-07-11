@@ -1,5 +1,6 @@
 ﻿//from the O2.Platform.Scripts API_NodeJS file
-using O2.DotNetWrappers.ExtensionMethods;
+
+using FluentSharp.CoreLib;
 using TeamMentor.CoreLib;
 
 namespace FluentSharp

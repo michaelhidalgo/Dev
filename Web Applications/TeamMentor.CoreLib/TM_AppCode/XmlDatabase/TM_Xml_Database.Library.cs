@@ -2,8 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Security.Application;
-using O2.DotNetWrappers.ExtensionMethods;
-using O2.FluentSharp;
+using FluentSharp.CoreLib;
 
 //using urn.microsoft.guidanceexplorer.guidanceItem;
 

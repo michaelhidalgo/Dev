@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using O2.DotNetWrappers.ExtensionMethods;
-using O2.DotNetWrappers.DotNet;
-using O2.DotNetWrappers.Windows;
-using O2.FluentSharp;
+using FluentSharp.CoreLib;
+using FluentSharp.CoreLib.API;
+using FluentSharp.Git;
+using FluentSharp.Git.APIs;
 using urn.microsoft.guidanceexplorer;
 using System.Threading;
 

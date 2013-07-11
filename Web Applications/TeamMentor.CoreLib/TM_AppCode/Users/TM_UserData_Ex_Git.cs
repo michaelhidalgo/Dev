@@ -1,7 +1,8 @@
 using System;
-using O2.DotNetWrappers.DotNet;
-using O2.DotNetWrappers.ExtensionMethods;
-using O2.FluentSharp;
+using FluentSharp.CoreLib.API;
+using FluentSharp.Git;
+using FluentSharp.CoreLib;
+using FluentSharp.Git.APIs;
 
 namespace TeamMentor.CoreLib
 {
@@ -46,6 +47,8 @@ namespace TeamMentor.CoreLib
                 if (userData.NGit.status().valid())
                 {
                     var start = DateTime.Now;
+                    userData.NGit.Author = "TeamMentor User".personIdent("email@teammentor.net");
+                    userData.NGit.Committer = "TeamMentor User".personIdent("email@teammentor.net");
                     userData.NGit.add_and_Commit_using_Status();
                     "[TM_UserData][GitCommit] in ".info(start.duration_to_Now());
                 }
@@ -100,7 +103,9 @@ namespace TeamMentor.CoreLib
                             return userData;
 
                         "[TM_UserData][GitPull]".info();
-                        var nGit = userData.Path_UserData.git_Pull();
+                        var nGit = userData.Path_UserData.git_Open();
+                        nGit.pull();
+                        //var nGit = userData.Path_UserData.git_Pull();
                         userData.pushUserRepository(nGit);
                     }
                     else
