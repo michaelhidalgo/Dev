@@ -37,18 +37,21 @@
     <SkipPostSharp>False</SkipPostSharp>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentSharp.BCL, Version=5.3.0.0, Culture=neutral, PublicKeyToken=55a0f9bf4256d533, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentSharp.BCL.5.0.83\lib\net35\FluentSharp.BCL.dll</HintPath>
-    </Reference>
     <Reference Include="FluentSharp.CoreLib, Version=5.3.0.0, Culture=neutral, PublicKeyToken=55a0f9bf4256d533, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentSharp.CoreLib.5.0.83\lib\net35\FluentSharp.CoreLib.dll</HintPath>
+      <HintPath>..\packages\FluentSharp.CoreLib.5.3.112\lib\net35\FluentSharp.CoreLib.dll</HintPath>
     </Reference>
     <Reference Include="FluentSharp.NGit, Version=5.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentSharp.NGit.5.0.83\lib\net40\FluentSharp.NGit.dll</HintPath>
+      <HintPath>..\packages\FluentSharp.NGit.5.3.112\lib\net40\FluentSharp.NGit.dll</HintPath>
     </Reference>
     <Reference Include="FluentSharp.REPL, Version=5.3.0.0, Culture=neutral, PublicKeyToken=55a0f9bf4256d533, processorArchitecture=MSIL">
       <ExecutableExtension>.exe</ExecutableExtension>
-      <HintPath>..\packages\FluentSharp.REPL.5.0.83\lib\net35\FluentSharp.REPL.exe</HintPath>
+      <HintPath>..\packages\FluentSharp.REPL.5.3.112\lib\net35\FluentSharp.REPL.exe</HintPath>
+    </Reference>
+    <Reference Include="FluentSharp.SharpDevelopEditor">
+      <HintPath>..\packages\FluentSharp.SharpDevelopEditor.5.3.112\lib\net35\FluentSharp.SharpDevelopEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentSharp.WinForms">
+      <HintPath>..\packages\FluentSharp.WinForms.5.3.112\lib\net35\FluentSharp.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -61,9 +64,6 @@
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="O2_Platform_External_SharpDevelop, Version=5.3.0.0, Culture=neutral, PublicKeyToken=55a0f9bf4256d533, processorArchitecture=MSIL">
-      <HintPath>..\packages\O2.Platform.External.SharpDevelop.5.0.83\lib\net35\O2_Platform_External_SharpDevelop.dll</HintPath>
     </Reference>
     <Reference Include="PostSharp, Version=3.0.31.9, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

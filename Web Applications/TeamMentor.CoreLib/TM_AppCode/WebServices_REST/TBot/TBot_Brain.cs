@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using FluentSharp.BCL;
+using FluentSharp.WinForms;
 using FluentSharp.CoreLib;
 using RazorEngine;
 using RazorEngine.Templating;

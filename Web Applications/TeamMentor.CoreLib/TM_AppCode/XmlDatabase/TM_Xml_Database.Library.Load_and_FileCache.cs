@@ -243,7 +243,7 @@ namespace TeamMentor.CoreLib
         {
             if (file.fileExists().isFalse())
                 return false;
-            var fileContents = file.fileContents().fixCRLF();
+            var fileContents = file.fileContents().fix_CRLF();
             var secondLine = fileContents.lines().second();
             return secondLine.starts("<guidanceExplorer");
         }

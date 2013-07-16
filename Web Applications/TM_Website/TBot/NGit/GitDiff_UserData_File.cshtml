@@ -53,7 +53,7 @@
                 var revWalk = new RevWalk(gitRepo);
                 var canonicalTreeParser = new CanonicalTreeParser(null, revWalk.GetObjectReader(), commit.Tree);
                 diffFormater.Format(new EmptyTreeIterator(), canonicalTreeParser);
-                return outputStream.str().fixCRLF();                
+                return outputStream.str().fix_CRLF();                
             };
         
         
@@ -92,7 +92,7 @@ Showing first @max entries<br/><br/>
         rawDiff = getDiff(repo, file, fromId, toId);
 
     }   
-    var diffLines = rawDiff.fixCRLF().lines();    
+    var diffLines = rawDiff.fix_CRLF().lines();    
     
     var diffLines_withData = diffLines.where((line) => line.starts("+") && !line.starts("++")|| line.starts("-") && !line.starts("--"));
 

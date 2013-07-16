@@ -9,7 +9,7 @@
 @{
     var tmRest    = (TM_REST) @Model;
     var session   = HttpContextFactory.Session;
-    var log_Lines = tmRest.Admin_Logs().trim().fixCRLF().lines().removeEmpty().reverse(); 
+    var log_Lines = tmRest.Admin_Logs().trim().fix_CRLF().lines().removeEmpty().reverse(); 
 }
 
 <h4>Debug Info</h4>

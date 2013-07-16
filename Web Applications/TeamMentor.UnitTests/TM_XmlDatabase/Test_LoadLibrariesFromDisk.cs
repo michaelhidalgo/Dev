@@ -28,7 +28,7 @@ namespace TeamMentor.UnitTests.TM_XmlDatabase
             Assert.IsNotEmpty(xmlFiles);
             foreach (var xmlFile in xmlFiles)
             {
-                var fileContents = xmlFile.fileContents().fixCRLF();
+                var fileContents = xmlFile.fileContents().fix_CRLF();
                 var secondLine  = fileContents.lines().second();
                 Assert.That(secondLine.starts("<guidanceExplorer"));                                                            
             }

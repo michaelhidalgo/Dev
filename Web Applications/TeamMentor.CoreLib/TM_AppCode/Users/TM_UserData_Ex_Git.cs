@@ -50,7 +50,7 @@ namespace TeamMentor.CoreLib
                     userData.NGit.Author = "TeamMentor User".personIdent("email@teammentor.net");
                     userData.NGit.Committer = "TeamMentor User".personIdent("email@teammentor.net");
                     userData.NGit.add_and_Commit_using_Status();
-                    "[TM_UserData][GitCommit] in ".info(start.duration_to_Now());
+                    "[TM_UserData][GitCommit] in ".info(start.duration_To_Now());
                 }
             return userData;
         }
@@ -69,7 +69,7 @@ namespace TeamMentor.CoreLib
                         var start = DateTime.Now;
                         "[TM_UserData][GitPush] Start".info();
                         nGit.push();
-                        "[TM_UserData][GitPush] in ".info(start.duration_to_Now());
+                        "[TM_UserData][GitPush] in ".info(start.duration_To_Now());
                     });
             return userData;
         }
@@ -113,7 +113,7 @@ namespace TeamMentor.CoreLib
                         var start = DateTime.Now;
                         "[TM_UserData][GitClone] Start".info();
                         gitLocation.git_Clone(userData.Path_UserData);
-                        "[TM_UserData][GitClone] in ".info(start.duration_to_Now());
+                        "[TM_UserData][GitClone] in ".info(start.duration_To_Now());
                     }
                 }
             }
