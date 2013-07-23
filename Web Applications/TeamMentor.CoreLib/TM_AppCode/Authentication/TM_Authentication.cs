@@ -98,6 +98,11 @@ namespace TeamMentor.CoreLib
         }
         public TM_Authentication    mapUserRoles(bool disable_Csrf_Check)
         {
+            //set git user
+            var _currentUser = currentUser;            
+            TM_UserData.Current.NGit_Author_Name = _currentUser.isNull() ? "" : _currentUser.UserName;
+            TM_UserData.Current.NGit_Author_Email = _currentUser.isNull() ? "" : _currentUser.EMail;
+
             Disable_Csrf_Check = disable_Csrf_Check;            
             if (sessionID == Guid.Empty || sessionID.validSession() == false)
                 /*if (SingleSignOn.singleSignOn_Enabled)

@@ -37,7 +37,7 @@ namespace TeamMentor.Website.App_Code.TempControllers
                 };
 
 
-            viewGitRepo.GitData  = getGitData(false);
+            viewGitRepo.GitData  = getGitData(true);
             
             return View("~/Views/GitUserData/Repository.cshtml",viewGitRepo);
         }
@@ -111,7 +111,7 @@ namespace TeamMentor.Website.App_Code.TempControllers
                         return outputStream.str().fix_CRLF();                
                     };
             
-            var rawDiff = toSha1 == NGit_Consts.EMPTY_SHA1 
+            var rawDiff = fromSha1 == NGit_Consts.EMPTY_SHA1 
                             ? getFistValue(nGit.repository(), fromSha1, path) 
                             :  getDiff(nGit.repository(), path, fromSha1, toSha1);
 

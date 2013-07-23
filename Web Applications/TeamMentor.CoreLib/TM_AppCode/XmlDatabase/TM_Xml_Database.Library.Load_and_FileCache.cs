@@ -85,6 +85,7 @@ namespace TeamMentor.CoreLib
                 ()=>{                        
                         lock (nGit)
                         {
+                            nGit.setDefaultAuthor();
                             nGit.add_and_Commit_using_Status();
                             nGit.git_Push_Library();
                         }

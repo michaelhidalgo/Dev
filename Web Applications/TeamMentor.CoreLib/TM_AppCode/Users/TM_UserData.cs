@@ -21,7 +21,9 @@ namespace TeamMentor.CoreLib
         //public Dictionary<Guid, TMUser>	ActiveSessions	    { get; set; }
         public bool                     UsingFileStorage    { get; set; }                
         public API_NGit                 NGit                { get; set; }
-        
+
+        public string                   NGit_Author_Name    { get; set; } 
+        public string                   NGit_Author_Email   { get; set; }
         
         public TM_UserData() : this (false)
         {
@@ -36,6 +38,8 @@ namespace TeamMentor.CoreLib
 
         public TM_UserData ResetData()
         {
+            NGit_Author_Name    = "tm-bot";
+            NGit_Author_Email   = "tm-bot@teammentor.net";
             FirstScriptToInvoke = "H2Scripts//FirstScriptToInvoke.h2";
             Path_WebRootFiles   = "WebRoot_Files";
             TMUsers             = new List<TMUser>();                        

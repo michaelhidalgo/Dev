@@ -61,12 +61,12 @@ namespace TeamMentor.Website.App_Code.TempControllers
                 };
 
 
-            viewGitRepo.GitData  = getGitData(nGit,false);
+            viewGitRepo.GitData  = getGitData(nGit,true);
             
             return View(viewGitRepo);
         }
         public ActionResult File(string path)
-        {
+        {   
             var nGit = TM_UserData.Current.NGit;
             var gitData = nGit.gitData_Repository();
 
@@ -138,7 +138,7 @@ namespace TeamMentor.Website.App_Code.TempControllers
                         return outputStream.str().fix_CRLF();                
                     };
             
-            var rawDiff = toSha1 == NGit_Consts.EMPTY_SHA1 
+            var rawDiff = fromSha1 == NGit_Consts.EMPTY_SHA1 
                             ? getFistValue(nGit.repository(), fromSha1, path) 
                             :  getDiff(nGit.repository(), path, fromSha1, toSha1);
 

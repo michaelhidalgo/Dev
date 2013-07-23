@@ -6,6 +6,25 @@ using FluentSharp.Git.APIs;
 
 namespace TeamMentor.CoreLib
 {
+    public static class TM_NGit_Ex
+    {
+        public static API_NGit setDefaultAuthor(this API_NGit nGit)
+        {
+            try
+            {
+                var userData    = TM_UserData.Current;
+                var name =      userData.NGit_Author_Name.valid() ? userData.NGit_Author_Name : "tm-bot";
+                var email =      userData.NGit_Author_Email.valid() ? userData.NGit_Author_Email : "tm-bot@teammentor.net";
+                nGit.Author     = name.personIdent(email);
+                nGit.Committer  = "tm-bot ".personIdent("tm-bot@teammentor.net");
+            }
+            catch(Exception ex)
+            {
+                ex.log();
+            }
+            return nGit;
+        }
+    }
     public static class TM_UserData_Ex_Git
     {
         public static TM_UserData   setupGitSupportAndLoadTMConfigFile(this TM_UserData userData)
@@ -47,8 +66,7 @@ namespace TeamMentor.CoreLib
                 if (userData.NGit.status().valid())
                 {
                     var start = DateTime.Now;
-                    userData.NGit.Author = "TeamMentor User".personIdent("email@teammentor.net");
-                    userData.NGit.Committer = "TeamMentor User".personIdent("email@teammentor.net");
+                    userData.NGit.setDefaultAuthor();
                     userData.NGit.add_and_Commit_using_Status();
                     "[TM_UserData][GitCommit] in ".info(start.duration_To_Now());
                 }

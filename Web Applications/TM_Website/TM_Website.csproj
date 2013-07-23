@@ -664,7 +664,7 @@
     <Content Include="Javascript\_mappings\HomePage_JS.txt" />
     <Content Include="Javascript\_mappings\HomePage_JS_TM.txt" />
     <Content Include="App_Code\TempControllers\GitLibraryController.cs" />
-    <Content Include="App_Code\TempControllers\_GitUserDataController.cs" />
+    <Content Include="App_Code\TempControllers\GitUserDataController.cs" />
     <Compile Include="MVC\Controllers\MarkdownController.cs" />
     <Content Include="TBot\Tests\hello.cshtml" />
     <Content Include="TBot\Tests\theTime.cshtml" />
