@@ -30,10 +30,43 @@
 
 <form action="/Markdown/SaveContent" method="post">
     
-   <h3>Markdown Editor</h3>       
-    <input class="btn btn-Info" type="button" value="Back to article" id="backToArticle" />    
+    <h3>Article Editor</h3>       
+    <br />
+
     <input class="btn btn-primary" type="submit" value="Save" />
-    <div class="mdd_toolbar"></div>   
+     (<a href = "/article/@ViewBag.ArticleId">back to article</a>)
+    . 
+     (<a href = "/GitLibrary/File?path=_GuidanceItems/@(ViewBag.ArticleId).xml" target="_blank">View File History and diff</a>)
+    
+    <br/>
+    <br />
+    <!--
+        <input class="btn btn-Info" type="button" value="Back to article" id="backToArticle" />    
+    -->
+    
+            
+     <div class="input-prepend">
+                <span class="add-on" style="width:120px;">Title..</span>
+                <input type="text" style="width:450px;" required value="@ViewBag.Article_Title" name="title"/>
+            </div><br/>
+            <div class="input-prepend">
+                <span class="add-on" style="width:120px;">Technology</span>
+                <input type="text" style="width:250px;" maxlength="50"          value="@ViewBag.Article_Technology"  name="technology"/>
+            </div><br/>        
+            <div class="input-prepend">
+                <span class="add-on" style="width:120px;">Phase</span>
+                <input type="text" style="width:250px;" maxlength="50"          value="@ViewBag.Article_Phase" name="phase"/>
+            </div><br/>
+            <div class="input-prepend">
+                <span class="add-on" style="width:120px;">Type</span>
+                <input type="text" style="width:250px;" maxlength="50"          value="@ViewBag.Article_Type" name="type"/>
+            </div><br/>
+            <div class="input-prepend">
+                <span class="add-on" style="width:120px;">Category</span>
+                <input type="text" style="width:250px;" maxlength="30"          value="@ViewBag.Article_Category" name="category"/>
+            </div><br/>
+    
+
     <input name="articleId" value="@ViewBag.ArticleId" type="hidden"/>
     @Html.TextArea("Content", new { @class="mdd_editor",rows=10})
     <div class="mdd_resizer"></div>

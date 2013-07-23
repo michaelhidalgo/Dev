@@ -25,9 +25,11 @@ namespace TeamMentor.Website
         {
             if (UserRole.ReadArticles.currentUserHasRole().isFalse())
                 return View(@"~/MVC/Views/Loggin_Needed.cshtml");
-            var markdownToRender = getArticle(articleId).Content.Data_Json;
+            var article = getArticle(articleId);
+            var markdownToRender = article.Content.Data_Json;
             ViewData["Content"] = markdownToRender.markdown_transform();
-            ViewData["ArticleId"] = articleId;
+            ViewData["ArticleId"] = articleId;            
+
             return View(@"~/MVC/Views/MarkDown_Viewer.cshtml");
         }
 
@@ -39,7 +41,15 @@ namespace TeamMentor.Website
 
             var article = getArticle(articleId);
             if (article.notNull())
-                ViewData["Content"] = getArticle(articleId).Content.Data_Json;
+            {
+                
+                ViewData["Content"] = article.Content.Data_Json;
+                ViewData["Article_Title"] = article.Metadata.Title;
+                ViewData["Article_Technology"] = article.Metadata.Technology;
+                ViewData["Article_Phase"] = article.Metadata.Phase;
+                ViewData["Article_Type"] = article.Metadata.Type;
+                ViewData["Article_Category"] = article.Metadata.Category;
+            }
             else
                 ViewData["Content"] = "NO ARTICLE With GUID: {0}".format(articleId);
             ViewData["ArticleId"] = articleId;
@@ -69,10 +79,15 @@ namespace TeamMentor.Website
         //receive article content and update article
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateInput(false)] 
-        public ActionResult SaveContent(string articleId, string content)
+        public ActionResult SaveContent(string articleId, string content, string category, string type, string phase, string technology, string title)
         {
             var article = getArticle(articleId);
             article.Content.Data.Value = content;
+            article.Metadata.Title = title ?? article.Metadata.Title;
+            article.Metadata.Category = category ?? article.Metadata.Category;
+            article.Metadata.Type = type ?? article.Metadata.Type;
+            article.Metadata.Phase = phase ?? article.Metadata.Phase;
+            article.Metadata.Technology = technology ?? article.Metadata.Technology;
             article.xmlDB_Save_Article(tmDatabase);
 
             return Redirect("/article/{0}".format(articleId));
