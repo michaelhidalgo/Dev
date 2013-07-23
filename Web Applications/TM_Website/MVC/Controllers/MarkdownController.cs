@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using FluentSharp.CoreLib;
-using FluentSharp.ExtensionMethods;
-using FluentSharp.Git;
 using TeamMentor.CoreLib;
 
 namespace TeamMentor.Website
