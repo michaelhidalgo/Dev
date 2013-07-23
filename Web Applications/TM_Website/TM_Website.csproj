@@ -67,19 +67,19 @@
     </Reference>
     <Reference Include="Mono.Posix">
       <HintPath>..\TeamMentor.UnitTests\NGit_Dlls\Mono.Posix.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Mono.Security">
       <HintPath>..\TeamMentor.UnitTests\NGit_Dlls\Mono.Security.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="NGit">
       <HintPath>..\TeamMentor.UnitTests\NGit_Dlls\NGit.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="NSch">
       <HintPath>..\TeamMentor.UnitTests\NGit_Dlls\NSch.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="O2_Platform_External_SharpDevelop">
       <HintPath>_Temp_Dependecies\O2_Platform_External_SharpDevelop.dll</HintPath>
@@ -89,7 +89,7 @@
     </Reference>
     <Reference Include="Sharpen">
       <HintPath>..\TeamMentor.UnitTests\NGit_Dlls\Sharpen.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Abstractions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
