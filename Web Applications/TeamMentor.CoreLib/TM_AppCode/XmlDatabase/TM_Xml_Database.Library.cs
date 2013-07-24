@@ -57,7 +57,7 @@ namespace TeamMentor.CoreLib
             {
                 case "raw":
                     return articleContent;
-                case "html":
+                /*case "html":
                     {
                         if (TMConfig.Current.TMSecurity.Sanitize_HtmlContent && article.Content.Sanitized.isFalse())
                             return articleContent.sanitizeHtmlContent();
@@ -67,9 +67,11 @@ namespace TeamMentor.CoreLib
                 case "safehtml":
                     {
                         return articleContent.sanitizeHtmlContent();
-                    }
+                    }*/
                 case "wikitext":
                     return "<div id ='tm_datatype_wikitext'>{0}</div>".format(articleContent);
+                case "html":
+                case "safehtml":
                 case "markdown":
                     return articleContent.markdown_transform();
                 default:

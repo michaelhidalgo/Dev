@@ -5,7 +5,7 @@ using FluentSharp.CoreLib;
 
 namespace FluentSharp
 {	
-	public static class _Extra_methods_HtmlAgilityPack_ExtensionMethods
+/*	public static class _Extra_methods_HtmlAgilityPack_ExtensionMethods
 	{	
         public static HtmlAgilityPack.HtmlDocument htmlDocument(this string htmlCode)
         {
@@ -50,5 +50,5 @@ namespace FluentSharp
         		return null;
         	}
 		}
-	}	
+	}	*/
 }    	

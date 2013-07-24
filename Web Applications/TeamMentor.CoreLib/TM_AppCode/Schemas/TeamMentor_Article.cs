@@ -225,7 +225,7 @@ namespace TeamMentor.CoreLib
             return article;
         }
 
-        public static void sanitize(this TeamMentor_Article article)
+        /*public static void sanitize(this TeamMentor_Article article)
         {
             if (article.Content.DataType.lower() == "html") // tidy the html
             {
@@ -242,7 +242,7 @@ namespace TeamMentor.CoreLib
                     article.Content.Data.Value = cdataContent;
                 }
             }
-        }
+        }*/
 
         //fix double encoding caused by JSON?CDATA/XML transfer of XML data
         public static string fixXmlDoubleEncodingIssue(this string htmlContent)

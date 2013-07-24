@@ -17,7 +17,7 @@
         {            
             $("textarea.mdd_editor").MarkdownDeep({
                 help_location:"/javascript/MarkdownDeep/mdd_help.htm",                
-                ExtraMode: true,
+                ExtraMode: false,
                 SafeMode: @(MarkdownDeep_ExtensionMethods.SafeMode ? "true" : "false")
             });
             $("#backToArticle").click(function()
@@ -36,7 +36,7 @@
     <input class="btn btn-primary" type="submit" value="Save" />
      (<a href = "/article/@ViewBag.ArticleId">back to article</a>)
     . 
-     (<a href = "/GitLibrary/File?path=_GuidanceItems/@(ViewBag.ArticleId).xml" target="_blank">View File History and diff</a>)
+     (<a href = "/GitLibrary/File?path=@ViewBag.ArticleId" target="_blank">View File History and diff</a>)
     
     <br/>
     <br />

@@ -43,10 +43,18 @@ namespace TeamMentor.Website.App_Code.TempControllers
         }
         public ActionResult File(string path)
         {            
+            if (path.isGuid())
+            {
+                path = TM_Xml_Database.Current.xmlDB_guidanceItemPath(path.guid()).replace("\\","/");
+            }
+                
             var gitData = nGit.gitData_Repository();
 
             //var gitData = getGitData(nGit, true);
-            var gitFile = (from file in gitData.Files where file.FilePath == path select file).first();
+            var gitFile = (from file in gitData.Files where path.contains(file.FilePath) select file).first();
+            if(gitFile.isNull())
+                return View("~/Views/GitUserData/File.cshtml",new GitData_File());
+
             gitData.Files = gitFile.wrapOnList();
             gitData.map_File_Commits();
             return View("~/Views/GitUserData/File.cshtml",gitFile);

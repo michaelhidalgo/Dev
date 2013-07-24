@@ -90,6 +90,8 @@ showGuidanceItemData = function (data) {
             "TechnologyLabel".$().html(loadedGuidanceItem.Metadata.Technology);
             "GuidanceTypeLabel".$().html(loadedGuidanceItem.Metadata.Type);
         }
+        showGuidanceItemMarkdown(loadedGuidanceItem.Content.Data_Json);
+        /*
         if (loadedGuidanceItem.Content.DataType.toLowerCase() === "markdown")
         {
             showGuidanceItemMarkdown(loadedGuidanceItem.Content.Data_Json);
@@ -102,7 +104,7 @@ showGuidanceItemData = function (data) {
         {
             showGuidanceItemHtml(loadedGuidanceItem.Content.Data_Json);
             $("#Edit_WYSIWYG").html("Edit WYSIWYG");
-        }
+        }*/
         if (TM.Gui.CurrentUser.isEditor() && loadedGuidanceItem.isPreview != true) {
             $(".EditButtons").show();
         }
