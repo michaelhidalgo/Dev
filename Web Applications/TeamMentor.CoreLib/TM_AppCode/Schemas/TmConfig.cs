@@ -11,6 +11,8 @@ namespace TeamMentor.CoreLib
         public WindowsAuthentication_Config WindowsAuthentication		{ get; set; }
         public Git_Config			        Git				            { get; set; }
         public OnInstallation_Config		OnInstallation				{ get; set; }
+        public VirtualArticles_Config       VirtualArticles             { get; set; }
+
 
         public class TMSetup_Config
         {
@@ -56,7 +58,6 @@ namespace TeamMentor.CoreLib
                 Default_AdminEmail           = "TM_alerts@securityinnovation.com";
             }
         }
-
         public class WindowsAuthentication_Config
         {				
             public bool		    Enabled		                { get; set; }
@@ -72,7 +73,6 @@ namespace TeamMentor.CoreLib
                 AdminGroup            = "TM_Admin";
             }
         }        
-
         public class Git_Config
         {
             public bool         AutoCommit_UserData         { get; set; }
@@ -96,7 +96,18 @@ namespace TeamMentor.CoreLib
                 DefaultLibraryToInstall_Name     = "";
                 DefaultLibraryToInstall_Location = "";
             }
-        }        
+        }
+        public class VirtualArticles_Config
+        {
+            public bool AutoRedirectIfGuidNotFound { get; set; }
+            public string AutoRedirectTarget { get; set; }
+
+            public VirtualArticles_Config()
+            {
+                AutoRedirectIfGuidNotFound = false;
+                AutoRedirectTarget = "https://teammentor.net/article/";
+            }
+        }
     }
     
     
@@ -160,6 +171,7 @@ namespace TeamMentor.CoreLib
             WindowsAuthentication   = new WindowsAuthentication_Config();
             OnInstallation          = new OnInstallation_Config();
             Git                     = new Git_Config();
+            VirtualArticles = new VirtualArticles_Config();
         }
                                                 
         public bool SaveTMConfig()

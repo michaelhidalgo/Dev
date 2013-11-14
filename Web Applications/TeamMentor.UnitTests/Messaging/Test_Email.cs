@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using O2.DotNetWrappers.ExtensionMethods;
 using O2.DotNetWrappers.Network;
 using TeamMentor.CoreLib;
@@ -60,9 +61,10 @@ namespace TeamMentor.UnitTests.CoreLib
      
             //adding valid serverUrl (email should be sent now)
             SendEmails.TM_Server_URL = "http://localhost:88/";
-            var lastMessageSent1 = SendEmails.Sent_EmailMessages.second();
+             var lastMessageSent1 =
+                 SendEmails.Sent_EmailMessages.@where(x => x.Message.contains("It's a pleasure to confirm")).first();
             
-            
+            Assert.IsTrue(lastMessageSent1.notNull());
             Assert.IsTrue (lastMessageSent1.Message.contains("Sent by TeamMentor."));
             Assert.IsTrue(lastMessageSent1.Message.contains("It's a pleasure to confirm that a new TeamMentor"));
             
