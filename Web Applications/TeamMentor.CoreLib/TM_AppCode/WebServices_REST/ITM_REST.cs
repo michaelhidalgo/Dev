@@ -86,6 +86,8 @@ namespace TeamMentor.CoreLib
         [OperationContract] [WebGet(UriTemplate = "/tbot"	        )]      Stream		TBot_Show();
         [OperationContract] [WebGet(UriTemplate = "/tbot/list"      )]	    Stream		TBot_List();
         [OperationContract] [WebGet(UriTemplate = "/tbot/run/{what}")]	    Stream		TBot_Run (string what);
+        [OperationContract] [WebGet(UriTemplate = "/tbot/SSO?KeySize={keySize}&username={username}", ResponseFormat = WebMessageFormat.Json)] Dictionary<string, string> GetSSOToken(int keysize, string username);
+     
         
         //html page redirects
 //        [OperationContract][WebGet   (UriTemplate = "/redirect/afterLoginToken/{username}/{loginToken}" )]	void Redirect_After_Login_Using_Token(string username, string loginToken);

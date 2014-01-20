@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Dynamic;
 using System.IO;
 using System.Security;
 using System.Web;
@@ -84,6 +86,19 @@ namespace TeamMentor.CoreLib
             }	        
             return null;
         }
+        public Dictionary<string, string> GetSSOToken(int keysize, string username)
+        {
+            var ssoKey = keysize.randomLetters();
+            var ssoToken = (username.sanitizeHtmlContent() + ssoKey).md5Hash();
+
+            var tokenDictionary = new Dictionary<string, string>()
+                          {
+                              {"SSOKey", ssoKey},
+                              {"SSOToken", ssoToken}
+                          };
+            return tokenDictionary;
+        }
+
         public Stream TBot_List()
         {
             try

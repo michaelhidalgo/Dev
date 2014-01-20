@@ -668,9 +668,11 @@
     <Content Include="TBot\Users\New Random User.cshtml" />
     <Content Include="TBot\Admin\UserData FirstScript.cshtml" />
     <Content Include="TBot\Admin\Config\Edit_TMConfig.cshtml" />
+    <Content Include="TBot\Admin\SSO.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
+    <Folder Include="TBot\Admin\Token\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TeamMentor.CoreLib\TeamMentor.CoreLib.csproj">
