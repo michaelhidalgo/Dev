@@ -6,7 +6,7 @@ using FluentSharp.WinForms;
 using Microsoft.Security.Application;
 using System.IO;
 using System.Security;
-
+using Algorim.CreoleWiki;
 namespace TeamMentor.CoreLib
 {
     public class HandleUrlRequest
@@ -579,14 +579,16 @@ namespace TeamMentor.CoreLib
                 context.Response.ContentType = "text/html";
                 var article = tmWebServices.GetGuidanceItemById(guid);
                 if (article.notNull())
-                { 
-                    var htmlTemplateFile = (article.Content.DataType.lower() == "wikitext") 
-                                                ? @"\Html_Pages\Gui\Pages\article_wikiText.html" 
-                                                : @"\Html_Pages\Gui\Pages\article_Html.html";
+                {
+                    var tempHtmlArticle = article.Content.DataType.ToLower() == "wikitext"
+                                                 ? new CreoleParser().Parse(article.Content.Data.Value)
+                                                 : article.Content.Data.Value;
+                   
+                    var htmlTemplateFile =  @"\Html_Pages\Gui\Pages\article_Html.html";
                     var htmlTemplate = context.Server.MapPath(htmlTemplateFile).fileContents();
                     
                     var htmlContent = htmlTemplate.replace("#ARTICLE_TITLE", article.Metadata.Title)
-                                                  .replace("#ARTICLE_HTML", article.Content.Data.Value);
+                                                  .replace("#ARTICLE_HTML", tempHtmlArticle);
                     context.Response.Write(htmlContent);      
                 
                     tmWebServices.logUserActivity("View Article (HTML)", "{0} ({1})".info(article.Metadata.Title, data));

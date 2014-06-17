@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using FluentSharp.WinForms;
 using Microsoft.Security.Application;
 using FluentSharp.CoreLib;
-
+using Algorim.CreoleWiki;
 //using urn.microsoft.guidanceexplorer.guidanceItem;
 
 namespace TeamMentor.CoreLib
@@ -70,7 +70,12 @@ namespace TeamMentor.CoreLib
                         return articleContent.sanitizeHtmlContent();
                     }
                 case "wikitext":
-                    return "<div id ='tm_datatype_wikitext'>{0}</div>".format(articleContent.htmlEncode());
+                    var parser = new CreoleParser();
+                    var returnHtml = parser.Parse(articleContent.htmlEncode());
+                   if (TMConfig.Current.TMSecurity.Sanitize_HtmlContent && article.Content.Sanitized.isFalse())
+                       return returnHtml.sanitizeHtmlContent();
+
+                   return returnHtml.fixXmlDoubleEncodingIssue();   
                 default:
                     return articleContent;
             }			
