@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using FluentSharp.WinForms;
 using Microsoft.Security.Application;
 using FluentSharp.CoreLib;
-using Algorim.CreoleWiki;
 using TeamMentor.CoreLib.TM_AppCode.ExtensionMethods;
 
 //using urn.microsoft.guidanceexplorer.guidanceItem;
