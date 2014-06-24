@@ -97,6 +97,7 @@
     <Compile Include="TM_AppCode\Authentication\ExtensionMethods\RoleBaseSecurity_ExtensionMethods.cs" />
     <Compile Include="TM_AppCode\Authentication\ExtensionMethods\TeamMentorUserManagement_ExtensionMethods.cs" />
     <Compile Include="TM_AppCode\Authentication\TokenAuthentication.cs" />
+    <Compile Include="TM_AppCode\ExtensionMethods\CreoleWiki_ExtensionMethods.cs" />
     <Compile Include="TM_AppCode\ExtensionMethods\Extra\Extra_DateTime_ExtensionMethods.cs" />
     <Compile Include="TM_AppCode\ExtensionMethods\Extra\Extra_Double_ExtensionMethods.cs" />
     <Compile Include="TM_AppCode\ExtensionMethods\Extra\Extra_Headers_ExtensioMethods.cs" />

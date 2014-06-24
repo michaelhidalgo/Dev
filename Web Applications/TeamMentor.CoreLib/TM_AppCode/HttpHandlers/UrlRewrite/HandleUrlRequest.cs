@@ -580,24 +580,22 @@ namespace TeamMentor.CoreLib
                 var article = tmWebServices.GetGuidanceItemById(guid);
                 if (article.notNull())
                 {
-                    var tempHtmlArticle = article.Content.DataType.ToLower() == "wikitext"
-                                                 ? new CreoleParser().Parse(article.Content.Data.Value)
-                                                 : article.Content.Data.Value;
-                   
-                    var htmlTemplateFile =  @"\Html_Pages\Gui\Pages\article_Html.html";
+                    var articleHtml = tmWebServices.GetGuidanceItemHtml(guid);
+
+                    var htmlTemplateFile = @"\Html_Pages\Gui\Pages\article_Html.html";
                     var htmlTemplate = context.Server.MapPath(htmlTemplateFile).fileContents();
-                    
+
                     var htmlContent = htmlTemplate.replace("#ARTICLE_TITLE", article.Metadata.Title)
-                                                  .replace("#ARTICLE_HTML", tempHtmlArticle);
-                    context.Response.Write(htmlContent);      
-                
+                                                  .replace("#ARTICLE_HTML", articleHtml);
+                    context.Response.Write(htmlContent);
+
                     tmWebServices.logUserActivity("View Article (HTML)", "{0} ({1})".info(article.Metadata.Title, data));
 
-                    endResponse(); 
+                    endResponse();
                 }
             }
             else
-                transfer_Request("articleViewer");              // will trigger exception     
+                transfer_Request("articleViewer"); // will trigger exception  
         }
         public void handle_ArticleViewRequest(string data)
         {			
