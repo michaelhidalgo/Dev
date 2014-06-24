@@ -6,7 +6,6 @@ using FluentSharp.WinForms;
 using Microsoft.Security.Application;
 using System.IO;
 using System.Security;
-using Algorim.CreoleWiki;
 namespace TeamMentor.CoreLib
 {
     public class HandleUrlRequest
