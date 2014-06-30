@@ -2,7 +2,7 @@
 using Algorim.CreoleWiki;
 using FluentSharp.CoreLib;
 
-namespace TeamMentor.CoreLib.TM_AppCode.ExtensionMethods
+namespace TeamMentor.CoreLib
 {
     public static class CreoleWiki_ExtensionMethods
     {
