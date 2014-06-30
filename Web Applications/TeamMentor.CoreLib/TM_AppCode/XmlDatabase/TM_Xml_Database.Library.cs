@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using FluentSharp.WinForms;
 using Microsoft.Security.Application;
 using FluentSharp.CoreLib;
-using TeamMentor.CoreLib.TM_AppCode.ExtensionMethods;
+using TeamMentor.CoreLib;
 
 //using urn.microsoft.guidanceexplorer.guidanceItem;
 

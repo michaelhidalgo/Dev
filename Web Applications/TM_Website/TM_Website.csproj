@@ -88,6 +88,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Aspx_Pages\CxIntegration.asmx" />
+    <Content Include="Aspx_Pages\CxIntegrationSSO.asmx" />
     <Content Include="Aspx_Pages\TM_Javascript_Settings.aspx" />
     <Content Include="Aspx_Pages\EnableUser.aspx" />
     <Content Include="Aspx_Pages\SetLibrary.aspx" />
