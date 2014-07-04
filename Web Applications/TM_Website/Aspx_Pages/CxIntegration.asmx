@@ -134,7 +134,7 @@ namespace CheckmarxService
                     var cwe = data[1].Trim();
                     var temptechnology = data[4].Trim();
 
-                    if (cwe.Contains(cweId.ToString(CultureInfo.InvariantCulture)) && temptechnology.Equals(technology))
+                    if (cwe.Contains(String.Format("CWE ID {0}",cweId)) && temptechnology.Equals(technology))
                     {
                         return data[2].Trim();
                     }
