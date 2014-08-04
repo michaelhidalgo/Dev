@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Mail;
 using System.Net.Mime;
-using System.Threading;
+//using System.Threading;
 using FluentSharp.CoreLib;
 using FluentSharp.CoreLib.API;
 //using FluentSharp.WinForms;
@@ -17,7 +17,7 @@ namespace TeamMentor.CoreLib
         public static string             TM_Server_URL       { get; set; }
         public static bool               Disable_EmailEngine { get; set; }
         public static bool               Dont_Send_Emails    { get; set; }
-        public static bool               Send_Emails_As_Sync { get; set; }
+//        public static bool               Send_Emails_As_Sync { get; set; }
 
         public        string             From                { get; set; }
         public        string             To                  { get; set; }
@@ -270,7 +270,8 @@ namespace TeamMentor.CoreLib
         {
             UserGroup.Admin.assert(); 
             try
-            {                 
+            {           
+                mapTMServerUrl();
 var userMessage =
 @"Hi {0}, a password reminder was requested for your account.
 
@@ -294,10 +295,21 @@ If you didn't make this request, please let us know at support@teammentor.net.
 
         }
 
-        public static Thread SendEmailToTM(string subject, string message)
+        public static bool SendEmailToTM(string subject, string message)
         {
             if (Disable_EmailEngine)
-                return null;
+                return false;
+
+            try
+            {
+                return new SendEmails().send(subject, message);
+            }
+            catch (Exception ex)
+            {
+                ex.log("in SendEmailToTM");
+                return false;
+            }
+            /*
             mapTMServerUrl();  
             var thread = O2Thread.mtaThread(
                 ()=>{
@@ -312,14 +324,25 @@ If you didn't make this request, please let us know at support@teammentor.net.
                     });
            if(Send_Emails_As_Sync)
                thread.Join();
-            return thread;
+            return thread;*/
         }
-        public static Thread SendEmailToEmail(string to, string subject, string message)
+        public static bool SendEmailToEmail(string to, string subject, string message)
         {
             if (Disable_EmailEngine)
-                return null;
-            mapTMServerUrl();  
-            var thread = O2Thread.mtaThread(
+                return false;
+            mapTMServerUrl();
+            
+            try
+            {
+                return new SendEmails().send(to, subject, message);
+            }
+            catch (Exception ex)
+            {
+                ex.log("in SendEmailToTM");
+                return false;
+            }
+
+            /*var thread = O2Thread.mtaThread(
                 ()=>{
                         try
                         {
@@ -332,14 +355,14 @@ If you didn't make this request, please let us know at support@teammentor.net.
                     });
             if(Send_Emails_As_Sync)
                thread.Join();
-            return thread;
+            return thread;*/
         }
         
     }
 
     public static class SendEmail_ExtensionMethods
     {
-        public static Thread email_NewUser_Welcome(this TMUser tmUser)
+        public static bool email_NewUser_Welcome(this TMUser tmUser)
         {
             var email = tmUser.EMail;
             var userName = tmUser.UserName;
@@ -357,7 +380,7 @@ If you didn't make this request, please let us know at support@teammentor.net.
                 var userMessage = TMConsts.EMAIL_BODY_NEW_USER_WELCOME.format(fullName, tmUser.UserName, serverUrl);
                 return SendEmails.SendEmailToEmail(email, subject, userMessage);
             }
-            return null;
+            return false;
         }
 
         public static bool serverNotConfigured(this SendEmails sendEmails)
